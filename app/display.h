@@ -10,5 +10,7 @@
 
 void DISPLAY_Init(void);
 void DISPLAY_Test(void);
+void DISPLAY_ShowBoolText(int state);
+
 
 #endif /* DISPLAY_H */

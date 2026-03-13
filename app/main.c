@@ -17,6 +17,7 @@
 
 #include <stdio.h>
 #include "display.h"
+#include "boutton.h"
 
 
 int main(void)
@@ -28,10 +29,15 @@ int main(void)
 	BSP_SYS_set_std_usart(UART2_ID, UART2_ID, UART2_ID);
 
     DISPLAY_Init();
+    BUTTON_Init();
 
-    DISPLAY_Test();
 
 	while (1)
 	{
+		 if (BUTTON_IsPressed(BUTTON_UP))
+			 DISPLAY_ShowBoolText(1);
+		 else
+		     DISPLAY_ShowBoolText(0);
+		 HAL_Delay(50);
 	}
 }

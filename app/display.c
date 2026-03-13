@@ -29,3 +29,18 @@ void DISPLAY_Test(void)
 
     ILI9341_DrawFilledCircle(120, 150, 40, ILI9341_COLOR_RED);
 }
+
+void DISPLAY_ShowBoolText(int state)
+{
+    /* On efface juste la zone du texte */
+    ILI9341_DrawFilledRectangle(20, 80, 220, 30, ILI9341_COLOR_GREEN);
+
+    if(state)
+    {
+        ILI9341_Puts(20, 85, "Bouton appuye", &Font_7x10, ILI9341_COLOR_WHITE, ILI9341_TRANSPARENT);
+    }
+    else
+    {
+        ILI9341_Puts(20, 85, "Bouton relache", &Font_7x10, ILI9341_COLOR_WHITE, ILI9341_TRANSPARENT);
+    }
+}
