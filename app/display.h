@@ -8,9 +8,6 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
-#include <stdint.h>
-#include <stdbool.h>
-
 void DISPLAY_Init(void);
 void DISPLAY_Test(void);
 
