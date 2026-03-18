@@ -32,7 +32,6 @@ void DISPLAY_Test(void)
 
 void DISPLAY_ShowBoolText(int state)
 {
-    /* On efface juste la zone du texte */
     ILI9341_DrawFilledRectangle(20, 80, 220, 30, ILI9341_COLOR_GREEN);
 
     if(state)

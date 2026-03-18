@@ -34,10 +34,8 @@ int main(void)
 
 	while (1)
 	{
-		 if (BUTTON_IsPressed(BUTTON_UP))
-			 DISPLAY_ShowBoolText(1);
-		 else
-		     DISPLAY_ShowBoolText(0);
-		 HAL_Delay(50);
+		bool up = BUTTON_IsPressed(BUTTON_UP);
+		DISPLAY_ShowBoolText(up);
+		HAL_Delay(100);
 	}
 }

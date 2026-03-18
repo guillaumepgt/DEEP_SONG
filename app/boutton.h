@@ -8,6 +8,7 @@
 #define BOUTTON_H
 
 #include "stm32g4xx_hal.h"
+#include <stdbool.h>
 
 #define BUTTON_COUNT 5
 
@@ -20,6 +21,6 @@ typedef enum {
 } ButtonId;
 
 void BUTTON_Init(void);
-uint8_t BUTTON_IsPressed(ButtonId button);
+bool BUTTON_IsPressed(ButtonId button);
 
 #endif
