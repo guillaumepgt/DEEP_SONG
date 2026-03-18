@@ -5,6 +5,7 @@
 #include "stm32g4_uart.h"
 #include "stm32g4_utils.h"
 #include <stdio.h>
+#include "boutton.h"
 #include <stdlib.h>
 #include "ui.h"
 
@@ -16,10 +17,13 @@ int main(void)
     BSP_SYS_set_std_usart(UART2_ID, UART2_ID, UART2_ID);
 
     UI_Init();
+    BUTTON_Init();
 
     while (1)
     {
-        UI_Process();
-        HAL_Delay(20);
+    	bool up = BUTTON_IsPressed(BUTTON_UP);
+    	UI_Process(up);
+    	HAL_Delay(10);
+
     }
 }

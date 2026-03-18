@@ -21,10 +21,8 @@ void UI_Init(void)
     etat_bouton_prec = 0;
 }
 
-void UI_Process(void)
+void UI_Process(bool etat_bouton)
 {
-    // 1. Lecture du bouton (Anti-rebond)
-    uint8_t etat_bouton = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
 
     if (etat_bouton == 1 && etat_bouton_prec == 0)
     {
