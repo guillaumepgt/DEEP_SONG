@@ -2,6 +2,7 @@
 #include "display.h"
 #include "stm32g4_adc.h"
 #include "stm32g4_gpio.h"
+#include "fft.h"
 #include <stdlib.h>
 
 // Variables "static" pour qu'elles restent mémorisées entre chaque tour de boucle
@@ -48,22 +49,12 @@ void UI_Process(bool etat_bouton)
         ecran_doit_changer = 0;
     }
 
-    // 3. Mise à jour de l'écran actif
     if (ecran_actuel == 0)
     {
-        // Plus tard : Mettre à jour les textes du Dashboard ici
+
     }
     else if (ecran_actuel == 1)
     {
-    	uint8_t fausses_frequences[8];
-
-		// On simule de la musique avec des nombres aléatoires pour tester le visuel
-		for(int i = 0; i < 8; i++) {
-			// Génère un niveau aléatoire entre 10% et 90%
-			fausses_frequences[i] = 10 + (rand() % 80);
-		}
-
-		// On envoie le tableau à l'écran !
-		DISPLAY_UpdateSpectrum(fausses_frequences);
+    	Traitement_Audio();
     }
 }
