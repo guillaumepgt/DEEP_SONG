@@ -13,6 +13,7 @@ void DISPLAY_Init(void);
 void DISPLAY_DrawBeautifulUI(void);
 void DISPLAY_DrawGraphScreen(void);
 void DISPLAY_UpdateGraph(uint16_t adc_value);
+void DISPLAY_UpdateSpectrum(uint8_t *band_levels);
 
 
 #endif /* DISPLAY_H */

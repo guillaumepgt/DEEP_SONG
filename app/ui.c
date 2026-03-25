@@ -2,6 +2,7 @@
 #include "display.h"
 #include "stm32g4_adc.h"
 #include "stm32g4_gpio.h"
+#include <stdlib.h>
 
 // Variables "static" pour qu'elles restent mémorisées entre chaque tour de boucle
 // et qu'elles soient privées (visibles uniquement dans ce fichier)
@@ -54,8 +55,15 @@ void UI_Process(bool etat_bouton)
     }
     else if (ecran_actuel == 1)
     {
-        // On lit l'ADC et on trace la courbe
-        uint16_t vraie_valeur_adc = BSP_ADC_getValue(ADC_1);
-        DISPLAY_UpdateGraph(vraie_valeur_adc);
+    	uint8_t fausses_frequences[8];
+
+		// On simule de la musique avec des nombres aléatoires pour tester le visuel
+		for(int i = 0; i < 8; i++) {
+			// Génère un niveau aléatoire entre 10% et 90%
+			fausses_frequences[i] = 10 + (rand() % 80);
+		}
+
+		// On envoie le tableau à l'écran !
+		DISPLAY_UpdateSpectrum(fausses_frequences);
     }
 }

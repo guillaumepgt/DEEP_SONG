@@ -108,3 +108,33 @@ void DISPLAY_UpdateGraph(uint16_t adc_value)
         current_x = 21;
     }
 }
+
+void DISPLAY_UpdateSpectrum(uint8_t *band_levels)
+{
+    uint16_t start_x = 25;       // Marge à gauche
+    uint16_t bar_width = 28;     // Largeur d'une barre
+    uint16_t spacing = 6;        // Espace entre les barres
+    uint16_t bottom_y = 220;     // Bas du graphique
+    uint16_t top_y = 50;         // Haut du graphique
+    uint16_t max_height = bottom_y - top_y; // 170 pixels de haut max
+
+    for(int i = 0; i < 8; i++)
+    {
+        uint8_t level = band_levels[i];
+        if(level > 100) level = 100;
+
+        uint16_t bar_height = (level * max_height) / 100;
+        uint16_t current_y = bottom_y - bar_height;
+        uint16_t x_pos = start_x + i * (bar_width + spacing);
+
+        if(current_y > top_y) {
+            ILI9341_DrawFilledRectangle(x_pos, top_y, x_pos + bar_width - 1, current_y - 1, C_CARD_BG);
+        }
+
+        if(bar_height > 0) {
+            uint16_t color = (i < 3) ? C_ACCENT_HUM : (i < 6) ? C_TEXT_LIGHT : C_ACCENT_TEMP;
+
+            ILI9341_DrawFilledRectangle(x_pos, current_y, x_pos + bar_width - 1, bottom_y, color);
+        }
+    }
+}
