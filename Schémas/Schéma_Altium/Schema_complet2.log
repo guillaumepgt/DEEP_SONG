@@ -1,0 +1,18 @@
+P-CAD Schematic ASCII File Export Log :
+      Information : Start export of symbol definitions for parts
+      Warning :     Symbol name [G431_Nucleo], mode [Normal], part [1] changed to [G431_Nucleo_1_N]
+      Warning :     Rectangle [-450mil : -800mil]-[550mil : 800mil] exported as lines.
+      Warning :     Symbol name [CONDENSATEUR_POL_ELECTROLY_RAD_2.0/5.08], mode [Normal], part [1] changed to [CONDENSATEUR_POL_ELECTROLY_R15]
+      Warning :     Symbol name [CONDENSATEUR_POL_ELECTROLY_RAD_2.0/5.08], mode [IEEE], part [1] changed to [CONDENSATEUR_POL_ELECTROLY_R12]
+      Warning :     Symbol name [REGULATEUR_TO220_78XX], mode [Normal], part [1] changed to [REGULATEUR_TO220_78XX_1_N]
+      Warning :     Rectangle [0mil : -300mil]-[600mil : 0mil] exported as lines.
+      Warning :     Symbol name [CONDENSATEUR_CER_RAD_5.08], mode [Normal], part [1] changed to [CONDENSATEUR_CER_RAD_5.08_1_N]
+      Warning :     Symbol name [CONDENSATEUR_POL_ELECTROLY_RAD_2.54/5.08], mode [Normal], part [1] changed to [CONDENSATEUR_POL_ELECTROLY_RB9]
+      Warning :     Symbol name [CONDENSATEUR_POL_ELECTROLY_RAD_2.54/5.08], mode [IEEE], part [1] changed to [CONDENSATEUR_POL_ELECTROLY_RBE]
+      Warning :     Symbol name [DOUILLE_BANANE_4mm], mode [Normal], part [1] changed to [DOUILLE_BANANE_4mm_1_N]
+      Warning :     Symbol name [ECRAN_TFT_2.4_TACTILE], mode [Normal], part [1] changed to [ECRAN_TFT_2.4_TACTILE_1_N]
+      Warning :     Rectangle [0mil : -1500mil]-[900mil : 0mil] exported as lines.
+      Warning :     Symbol name [Goutte Strap], mode [Normal], part [1] changed to [Goutte_Strap_1_N]
+      Warning :     Rectangle [-80mil : -40mil]-[-20mil : 40mil] exported as lines.
+      Warning :     Rectangle [20mil : -40mil]-[80mil : 40mil] exported as lines.
+EndLog
