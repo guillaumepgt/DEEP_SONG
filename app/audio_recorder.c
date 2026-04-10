@@ -69,7 +69,7 @@ AudioStatus_t AudioRecorder_SaveToFlash(void)
         b6 = AudioRecorder_Convert12bTo8b(audio_buffer[i + 6]);
         b7 = AudioRecorder_Convert12bTo8b(audio_buffer[i + 7]);
 
-        packed_data =
+        packed_data =  //on doit écrire par bout de 64bits
               ((uint64_t)b0)
             | ((uint64_t)b1 << 8)
             | ((uint64_t)b2 << 16)

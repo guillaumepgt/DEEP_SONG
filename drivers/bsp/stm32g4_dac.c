@@ -283,6 +283,7 @@ void BSP_DAC_demo_with_dma() {
     while (1) {}
 }
 
+#ifdef BSP_STM32G4_ADC_H_
 void DMA1_Channel1_IRQHandler(void) {
     HAL_DMA_IRQHandler(&hdma_dac1_ch1);
 }
@@ -292,7 +293,8 @@ void DMA1_Channel2_IRQHandler(void) {
 }
 
 void DMAMUX_OVR_IRQHandler(void) {
-    HAL_DMA_IRQHandler(&hdma_dac1_ch1); // Ou hdma_dac1_ch2 en fonction du canal
+    HAL_DMA_IRQHandler(&hdma_dac1_ch1);
 }
+#endif
 
 #endif

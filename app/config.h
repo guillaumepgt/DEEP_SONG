@@ -38,7 +38,7 @@
 	#define USE_IN13	0 //Broche correspondante: PA5
 	#define USE_IN17	0 //Broche correspondante: PA4
 
-#define USE_DAC				0
+#define USE_DAC				1
 
 /*------------------Afficheurs------------------*/
 #define USE_ILI9341			1 // �cran TFT

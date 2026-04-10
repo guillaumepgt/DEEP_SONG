@@ -6,7 +6,6 @@
  * @brief	Fichier principal de votre projet sur carte Nucléo STM32G431KB
  *******************************************************************************
  */
-
 #include "config.h"
 #include "stm32g4_sys.h"
 
@@ -16,9 +15,12 @@
 #include "stm32g4_utils.h"
 #include "stm32g4_adc.h"
 #include "stm32g4_flash.h"
+#include "stm32g4_dac.h"
 
 #include <stdio.h>
+
 #include "audio_recorder.h"
+#include "audio_player.h"
 
 int main(void)
 {
@@ -30,23 +32,13 @@ int main(void)
     BSP_ADC_init();
 
     AudioRecorder_Init();
+    AudioPlayer_Init();
 
     printf("Debut enregistrement...\r\n");
 
     AudioRecorder_Record(ADC_2);
 
     printf("Enregistrement termine\r\n");
-    printf("Avant sauvegarde\r\n");
-
-//    for (int i = 0; i < 50; i++)
-//    {
-//        printf("sample[%d] = %u\r\n", i, AudioRecorder_GetSample(i));
-//    }
-//
-//    for (int i = 1850; i < 1920; i++)
-//    {
-//        printf("sample[%d] = %u\r\n", i, AudioRecorder_GetSample(i));
-//    }
 
     if (AudioRecorder_SaveToFlash() == AUDIO_OK)
     {
@@ -57,10 +49,15 @@ int main(void)
         printf("Erreur sauvegarde flash\r\n");
     }
 
-    printf("Apres sauvegarde\r\n");
-    BSP_FLASH_dump();
-
+    printf("Lecture en boucle...\r\n");
+    int i=0;
     while (1)
     {
+
+        printf("Lecture %d ...\r\n",i++);
+    	//AudioPlayer_PlayFromFlash();
+
+        // petite pause entre deux lectures (optionnel)
+        //HAL_Delay(200);
     }
 }
