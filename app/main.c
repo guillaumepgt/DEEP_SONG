@@ -14,28 +14,53 @@
 #include "stm32g4_gpio.h"
 #include "stm32g4_uart.h"
 #include "stm32g4_utils.h"
+#include "stm32g4_adc.h"
+#include "stm32g4_flash.h"
 
 #include <stdio.h>
-#include "display.h"
-#include "boutton.h"
-
+#include "audio_recorder.h"
 
 int main(void)
 {
-	HAL_Init();
+    HAL_Init();
 
-	BSP_GPIO_enable();
-	BSP_UART_init(UART2_ID, 115200);
-	BSP_SYS_set_std_usart(UART2_ID, UART2_ID, UART2_ID);
+    BSP_GPIO_enable();
+    BSP_UART_init(UART2_ID, 115200);
+    BSP_SYS_set_std_usart(UART2_ID, UART2_ID, UART2_ID);
+    BSP_ADC_init();
 
-    DISPLAY_Init();
-    BUTTON_Init();
+    AudioRecorder_Init();
 
+    printf("Debut enregistrement...\r\n");
 
-	while (1)
-	{
-		bool up = BUTTON_IsPressed(BUTTON_UP);
-		DISPLAY_ShowBoolText(up);
-		HAL_Delay(100);
-	}
+    AudioRecorder_Record(ADC_2);
+
+    printf("Enregistrement termine\r\n");
+    printf("Avant sauvegarde\r\n");
+
+//    for (int i = 0; i < 50; i++)
+//    {
+//        printf("sample[%d] = %u\r\n", i, AudioRecorder_GetSample(i));
+//    }
+//
+//    for (int i = 1850; i < 1920; i++)
+//    {
+//        printf("sample[%d] = %u\r\n", i, AudioRecorder_GetSample(i));
+//    }
+
+    if (AudioRecorder_SaveToFlash() == AUDIO_OK)
+    {
+        printf("Sauvegarde flash OK\r\n");
+    }
+    else
+    {
+        printf("Erreur sauvegarde flash\r\n");
+    }
+
+    printf("Apres sauvegarde\r\n");
+    BSP_FLASH_dump();
+
+    while (1)
+    {
+    }
 }
