@@ -4,7 +4,7 @@
  * @author	vchav
  * @author  Samuel Poiraud
  * @date	Jun 11, 2024
- * @brief	Adaptation du module créé par Samuel Poiraud pour la stm32f103rbt6
+ * @brief	Adaptation du module crï¿½ï¿½ par Samuel Poiraud pour la stm32f103rbt6
  *******************************************************************************
  */
 #include "stm32g4_flash.h"
@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-#define BASE_ADDRESS					0x0801F800		//adresse du début de la dernière page (2kBytes)
+#define BASE_ADDRESS					0x0801F800		//adresse du dï¿½but de la derniï¿½re page (2kBytes)
 #define PAGE_USED_FOR_THIS_MODULE    	63
 #define	SIZE_SECTOR_IN_BYTES			(2048)
 #define SIZE_SECTOR_IN_DOUBLEWORDS		(SIZE_SECTOR_IN_BYTES/8)
@@ -26,9 +26,9 @@ extern void FLASH_PageErase(uint32_t PageAddress, uint32_t Banks);
 
 
 /**
- * @brief	Fonction de démo permettant de se familiariser avec les fonctions de ce module logiciel.
- * @brief	Cette fonction consulte et incrémente le nombre inscrit dans la première case. Puis, elle lance un affichage du contenu complet.
- * @pre		ATTENTION : ne pas appeler cette fonction en tâche de fond. Risque d'endommager la flash en cas d'écritures trop nombreuses.
+ * @brief	Fonction de dï¿½mo permettant de se familiariser avec les fonctions de ce module logiciel.
+ * @brief	Cette fonction consulte et incrï¿½mente le nombre inscrit dans la premiï¿½re case. Puis, elle lance un affichage du contenu complet.
+ * @pre		ATTENTION : ne pas appeler cette fonction en tï¿½che de fond. Risque d'endommager la flash en cas d'ï¿½critures trop nombreuses.
  */
 void FLASH_demo(void)
 {
@@ -50,18 +50,18 @@ void FLASH_demo(void)
 
 
 /**
- * @brief	Enregistre une donnée dans la case souhaitée, sans toucher aux autres cases
- * @param  	index: Numéro de la case (de 0 à 255).
- * @post  	ATTENTION : si la case est déjà occupée par une donnée différente de 0xFFFFFFFF (valeur par défaut après effacement), une sauvegarde complète du secteur est faite, puis un effacement, puis une restitution !
- * @post  	le temps d'exécution de cette fonction peut nettement varier !
- * @pre		//ATTENTION : ne pas appeler cette fonction trop fréquemment. Risque d'endommager la flash en cas d'écritures trop nombreuses. (>10000 sur le cycle de vie complet du produit)
+ * @brief	Enregistre une donnï¿½e dans la case souhaitï¿½e, sans toucher aux autres cases
+ * @param  	index: Numï¿½ro de la case (de 0 ï¿½ 255).
+ * @post  	ATTENTION : si la case est dï¿½jï¿½ occupï¿½e par une donnï¿½e diffï¿½rente de 0xFFFFFFFF (valeur par dï¿½faut aprï¿½s effacement), une sauvegarde complï¿½te du secteur est faite, puis un effacement, puis une restitution !
+ * @post  	le temps d'exï¿½cution de cette fonction peut nettement varier !
+ * @pre		//ATTENTION : ne pas appeler cette fonction trop frï¿½quemment. Risque d'endommager la flash en cas d'ï¿½critures trop nombreuses. (>10000 sur le cycle de vie complet du produit)
  */
 void BSP_FLASH_set_doubleword(uint32_t index, uint64_t data)
 {
 	uint64_t current_doubleword;
 	assert(index < SIZE_SECTOR_IN_DOUBLEWORDS);
 	current_doubleword = BSP_FLASH_read_doubleword(index);
-	if((current_doubleword & data) != data)	//il n'est pas possible d'écrire le mot sans être pollué par des zéros qui seraient déjà écrit ici
+	if((current_doubleword & data) != data)	//il n'est pas possible d'ï¿½crire le mot sans ï¿½tre polluï¿½ par des zï¿½ros qui seraient dï¿½jï¿½ ï¿½crit ici
 		FLASH_keeping_everything_else(index);
 
 	FLASH_write_doubleword(index, data);
@@ -84,7 +84,7 @@ uint64_t BSP_FLASH_read_doubleword(uint32_t index)
 
 
 /**
- * @brief Cette fonction affiche les SIZE_SECTOR données (32 bits) disponibles dans le dernier secteur de la FLASH
+ * @brief Cette fonction affiche les SIZE_SECTOR donnï¿½es (32 bits) disponibles dans le dernier secteur de la FLASH
  */
 void BSP_FLASH_dump(void){
 	uint32_t index;
@@ -111,7 +111,7 @@ static void FLASH_keeping_everything_else(uint32_t index)
 	for(i=0; i<SIZE_SECTOR_IN_DOUBLEWORDS; i++)
 	{
 		if(i!=index && saved_values[i]!=(uint64_t)0xFFFFFFFFFFFFFFFF)
-			FLASH_write_doubleword(i, saved_values[i]);	//on réécrit tout sauf le mot
+			FLASH_write_doubleword(i, saved_values[i]);	//on rï¿½ï¿½crit tout sauf le mot
 	}
 }
 
@@ -134,4 +134,14 @@ static void FLASH_write_doubleword(uint32_t index, uint64_t data)
 	HAL_FLASH_Unlock();
 	HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, BASE_ADDRESS+8*index, (uint64_t)(data));
 	HAL_FLASH_Lock();
+}
+
+void BSP_FLASH_erase_page(void)
+{
+    FLASH_erase();
+}
+
+void BSP_FLASH_write_doubleword_fast(uint32_t index, uint64_t data)
+{
+    FLASH_write_doubleword(index, data);
 }
