@@ -108,3 +108,8 @@ uint32_t AudioRecorder_GetSampleCount(void)
 {
     return AUDIO_SAMPLE_COUNT;
 }
+
+const uint16_t *AudioRecorder_GetBuffer(void)
+{
+    return audio_buffer;
+}

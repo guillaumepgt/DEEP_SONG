@@ -108,3 +108,155 @@ void DISPLAY_UpdateGraph(uint16_t adc_value)
         current_x = 21;
     }
 }
+
+static void DISPLAY_DrawMessageScreen(char *title,
+                                      char *line1,
+                                      char *line2)
+{
+    ILI9341_Fill(C_BACKGROUND);
+
+    /* Bandeau supérieur */
+    ILI9341_DrawFilledRectangle(0, 0, 320, 30, C_HEADER);
+    ILI9341_Puts(10, 8, title, &Font_7x10, C_CARD_BG, C_HEADER);
+
+    /* Carte centrale */
+    ILI9341_DrawFilledRectangle(19, 59, 301, 191, C_CARD_BORDER);
+    ILI9341_DrawFilledRectangle(20, 60, 300, 190, C_CARD_BG);
+
+    /* Texte */
+    ILI9341_Puts(45, 105, line1, &Font_7x10, C_TEXT_MAIN, C_CARD_BG);
+
+    if (line2 != 0)
+    {
+        ILI9341_Puts(45, 125, line2, &Font_7x10, C_TEXT_MAIN, C_CARD_BG);
+    }
+}
+
+
+void DISPLAY_ShowRecordPrompt(void)
+{
+    DISPLAY_DrawMessageScreen(
+        "ENREGISTREMENT AUDIO",
+        "Appuyez sur le bouton",
+        "pour demarrer"
+    );
+}
+
+
+void DISPLAY_ShowRecording(void)
+{
+    DISPLAY_DrawMessageScreen(
+        "ENREGISTREMENT AUDIO",
+        "Enregistrement...",
+        0
+    );
+}
+
+
+void DISPLAY_ShowSaving(void)
+{
+    DISPLAY_DrawMessageScreen(
+        "MEMORISATION AUDIO",
+        "Sauvegarde en Flash...",
+        0
+    );
+}
+
+
+void DISPLAY_ShowPlayPrompt(void)
+{
+    DISPLAY_DrawMessageScreen(
+        "AUDIO MEMORISE",
+        "Rappuyez sur le bouton",
+        "pour lire"
+    );
+}
+
+
+void DISPLAY_ShowPlaying(void)
+{
+    DISPLAY_DrawMessageScreen(
+        "LECTURE AUDIO",
+        "Lecture en cours...",
+        0
+    );
+}
+
+
+void DISPLAY_ShowFinished(void)
+{
+    DISPLAY_DrawMessageScreen(
+        "LECTURE TERMINEE",
+        "Appuyez pour",
+        "recommencer"
+    );
+}
+
+void DISPLAY_DrawRecordedSignal(const uint16_t *samples, uint32_t sample_count)
+{
+    uint16_t x;
+    uint32_t index;
+    uint16_t adc_value;
+    uint16_t y;
+
+    if (samples == 0 || sample_count == 0)
+    {
+        DISPLAY_ShowPlayPrompt();
+        return;
+    }
+
+    /*
+     * On réutilise l'écran de graphe existant.
+     */
+    DISPLAY_DrawGraphScreen();
+
+    /*
+     * On remplace le titre par quelque chose de plus adapté.
+     */
+    ILI9341_DrawFilledRectangle(0, 0, 320, 30, C_HEADER);
+    ILI9341_Puts(10, 8, "SIGNAL ENREGISTRE", &Font_7x10, C_CARD_BG, C_HEADER);
+
+    /*
+     * Petite indication à l'utilisateur.
+     */
+    ILI9341_Puts(175, 35, "Appuyez pour lire", &Font_7x10, C_TEXT_LIGHT, C_BACKGROUND);
+
+    /*
+     * La zone utile va environ de x = 21 à x = 298.
+     * On "échantillonne" le buffer complet pour l'adapter
+     * à la largeur de l'écran.
+     */
+    for (index = 0; index < sample_count; index++)
+    {
+        adc_value = samples[index];
+
+        if (adc_value > 4095)
+        {
+            adc_value = 4095;
+        }
+        else if (adc_value<0)
+        {
+        	adc_value=0;
+        }
+
+        /*
+         * Projection de tout le buffer sur la largeur du graphe :
+         * x va de 21 à 298
+         */
+        x = 21 + ((index * (298 - 21)) / (sample_count - 1));
+
+        /*
+         * Projection ADC 0-4095 sur la hauteur du graphe :
+         * y va de 220 à 50
+         */
+        y = 220 - ((adc_value * 170) / 4095);
+
+        ILI9341_DrawFilledRectangle(
+            x,
+            y - 1,
+            x + 1,
+            y + 1,
+            C_ACCENT_TEMP
+        );
+    }
+}

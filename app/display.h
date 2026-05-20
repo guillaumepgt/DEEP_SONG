@@ -14,5 +14,13 @@ void DISPLAY_DrawBeautifulUI(void);
 void DISPLAY_DrawGraphScreen(void);
 void DISPLAY_UpdateGraph(uint16_t adc_value);
 
+void DISPLAY_ShowRecordPrompt(void);
+void DISPLAY_ShowRecording(void);
+void DISPLAY_ShowSaving(void);
+void DISPLAY_ShowPlayPrompt(void);
+void DISPLAY_ShowPlaying(void);
+void DISPLAY_ShowFinished(void);
+void DISPLAY_DrawRecordedSignal(const uint16_t *samples, uint32_t sample_count);
+
 
 #endif /* DISPLAY_H */

@@ -1,61 +1,95 @@
 #include "ui.h"
 #include "display.h"
+#include "audio_recorder.h"
+#include "audio_player.h"
 #include "stm32g4_adc.h"
-#include "stm32g4_gpio.h"
+#include <stdio.h>
 
-// Variables "static" pour qu'elles restent mémorisées entre chaque tour de boucle
-// et qu'elles soient privées (visibles uniquement dans ce fichier)
-static uint8_t ecran_actuel = 0;
-static uint8_t ecran_doit_changer = 1;
-static uint8_t etat_bouton_prec = 0;
+typedef enum
+{
+    UI_WAIT_RECORD = 0,
+    UI_WAIT_PLAY
+} UI_State_t;
+
+static UI_State_t ui_state = UI_WAIT_RECORD;
+static bool etat_bouton_prec = false;
+
+
+/*
+ * Renvoie true uniquement au moment où le bouton
+ * vient juste d'être appuyé.
+ */
+static bool UI_ButtonPressedEvent(bool etat_bouton)
+{
+    bool nouvel_appui = (etat_bouton == true && etat_bouton_prec == false);
+
+    etat_bouton_prec = etat_bouton;
+
+    return nouvel_appui;
+}
+
 
 void UI_Init(void)
 {
-    // Initialisation du matériel géré par l'UI
     DISPLAY_Init();
-    BSP_ADC_init();
 
-    // État initial
-    ecran_actuel = 0;
-    ecran_doit_changer = 1;
-    etat_bouton_prec = 0;
+    BSP_ADC_init();
+    AudioRecorder_Init();
+    AudioPlayer_Init();
+
+    ui_state = UI_WAIT_RECORD;
+    etat_bouton_prec = false;
+
+    DISPLAY_ShowRecordPrompt();
 }
+
 
 void UI_Process(bool etat_bouton)
 {
-
-    if (etat_bouton == 1 && etat_bouton_prec == 0)
+    if (!UI_ButtonPressedEvent(etat_bouton))
     {
-        ecran_actuel++;
-        if (ecran_actuel > 1) {
-            ecran_actuel = 0;
-        }
-        ecran_doit_changer = 1;
-    }
-    etat_bouton_prec = etat_bouton;
-
-
-    // 2. Changement d'écran si nécessaire
-    if (ecran_doit_changer == 1)
-    {
-        if (ecran_actuel == 0) {
-            DISPLAY_DrawBeautifulUI();
-        }
-        else if (ecran_actuel == 1) {
-            DISPLAY_DrawGraphScreen();
-        }
-        ecran_doit_changer = 0;
+        return;
     }
 
-    // 3. Mise à jour de l'écran actif
-    if (ecran_actuel == 0)
+    /*
+     * État 1 :
+     * L'utilisateur doit appuyer pour enregistrer.
+     */
+    if (ui_state == UI_WAIT_RECORD)
     {
-        // Plus tard : Mettre à jour les textes du Dashboard ici
+        DISPLAY_ShowRecording();
+
+        AudioRecorder_Record(ADC_2);
+
+        for (uint32_t i = 0; i < AudioRecorder_GetSampleCount(); i++)
+        {
+            printf("%lu : %u\r\n", i, AudioRecorder_GetSample(i));
+        }
+
+        DISPLAY_ShowSaving();
+
+        AudioRecorder_SaveToFlash();
+
+        DISPLAY_DrawRecordedSignal(
+            AudioRecorder_GetBuffer(),
+            AudioRecorder_GetSampleCount()
+        );
+
+        ui_state = UI_WAIT_PLAY;
     }
-    else if (ecran_actuel == 1)
+
+    /*
+     * État 2 :
+     * L'utilisateur doit rappuyer pour lire.
+     */
+    else if (ui_state == UI_WAIT_PLAY)
     {
-        // On lit l'ADC et on trace la courbe
-        uint16_t vraie_valeur_adc = BSP_ADC_getValue(ADC_1);
-        DISPLAY_UpdateGraph(vraie_valeur_adc);
+        DISPLAY_ShowPlaying();
+
+        AudioPlayer_PlayFromFlash();
+
+        DISPLAY_ShowFinished();
+
+        ui_state = UI_WAIT_RECORD;
     }
 }
