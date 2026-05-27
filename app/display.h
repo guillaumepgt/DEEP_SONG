@@ -10,17 +10,19 @@
 #include <stdint.h>
 
 void DISPLAY_Init(void);
-void DISPLAY_DrawBeautifulUI(void);
 void DISPLAY_DrawGraphScreen(void);
-void DISPLAY_UpdateGraph(uint16_t adc_value);
 
+//Pour afficher des messages (fonctions très simples)
 void DISPLAY_ShowRecordPrompt(void);
 void DISPLAY_ShowRecording(void);
 void DISPLAY_ShowSaving(void);
 void DISPLAY_ShowPlayPrompt(void);
 void DISPLAY_ShowPlaying(void);
 void DISPLAY_ShowFinished(void);
-void DISPLAY_DrawRecordedSignal(const uint16_t *samples, uint32_t sample_count);
+void DISPLAY_ShowRecordFinished(void);
 
+
+void DISPLAY_DrawRecordedSignal(const uint16_t *samples, uint32_t sample_count);
+void DISPLAY_DrawMenu(uint8_t selected_index);
 
 #endif /* DISPLAY_H */

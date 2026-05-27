@@ -7,27 +7,21 @@
 
 typedef enum
 {
-    UI_WAIT_RECORD = 0,
-    UI_WAIT_PLAY
-} UI_State_t;
+    MENU_RECORD = 0,
+    MENU_PLAY,
+    MENU_SHOW_SIGNAL,
+    MENU_COUNT
+} UI_MenuItem_t;
 
-static UI_State_t ui_state = UI_WAIT_RECORD;
-static bool etat_bouton_prec = false;
+static uint8_t menu_index = 0;
+static bool audio_available = false;
 
+static UI_Input_t previous_input;
 
-/*
- * Renvoie true uniquement au moment où le bouton
- * vient juste d'être appuyé.
- */
-static bool UI_ButtonPressedEvent(bool etat_bouton)
+static bool UI_RisingEdge(bool current, bool previous)
 {
-    bool nouvel_appui = (etat_bouton == true && etat_bouton_prec == false);
-
-    etat_bouton_prec = etat_bouton;
-
-    return nouvel_appui;
+    return current == true && previous == false;
 }
-
 
 void UI_Init(void)
 {
@@ -35,61 +29,105 @@ void UI_Init(void)
 
     BSP_ADC_init();
     AudioRecorder_Init();
-    AudioPlayer_Init();
 
-    ui_state = UI_WAIT_RECORD;
-    etat_bouton_prec = false;
+    menu_index = 0;
+    audio_available = false;
 
-    DISPLAY_ShowRecordPrompt();
+    previous_input.center = false;
+    previous_input.up = false;
+    previous_input.down = false;
+    previous_input.left = false;
+    previous_input.right = false;
+
+    DISPLAY_DrawMenu(menu_index);
 }
 
-
-void UI_Process(bool etat_bouton)
+void UI_Process(UI_Input_t input)
 {
-    if (!UI_ButtonPressedEvent(etat_bouton))
+    bool event_center = UI_RisingEdge(input.center, previous_input.center);
+    bool event_up     = UI_RisingEdge(input.up, previous_input.up);
+    bool event_down   = UI_RisingEdge(input.down, previous_input.down);
+    bool event_left   = UI_RisingEdge(input.left, previous_input.left);
+    bool event_right  = UI_RisingEdge(input.right, previous_input.right);
+
+    previous_input = input;
+
+    if (event_up)
     {
-        return;
-    }
-
-    /*
-     * État 1 :
-     * L'utilisateur doit appuyer pour enregistrer.
-     */
-    if (ui_state == UI_WAIT_RECORD)
-    {
-        DISPLAY_ShowRecording();
-
-        AudioRecorder_Record(ADC_2);
-
-        for (uint32_t i = 0; i < AudioRecorder_GetSampleCount(); i++)
+        if (menu_index > 0)
         {
-            printf("%lu : %u\r\n", i, AudioRecorder_GetSample(i));
+            menu_index--;
+            DISPLAY_DrawMenu(menu_index);
         }
 
-        DISPLAY_ShowSaving();
-
-        AudioRecorder_SaveToFlash();
-
-        DISPLAY_DrawRecordedSignal(
-            AudioRecorder_GetBuffer(),
-            AudioRecorder_GetSampleCount()
-        );
-
-        ui_state = UI_WAIT_PLAY;
     }
 
-    /*
-     * État 2 :
-     * L'utilisateur doit rappuyer pour lire.
-     */
-    else if (ui_state == UI_WAIT_PLAY)
+    else if (event_down)
     {
-        DISPLAY_ShowPlaying();
+        if (menu_index < MENU_COUNT-1)
+        {
+            menu_index++;
+            DISPLAY_DrawMenu(menu_index);
+        }
+    }
 
-        AudioPlayer_PlayFromFlash();
+    else if (event_left)
+    {
+        DISPLAY_DrawMenu(menu_index);
+    }
 
-        DISPLAY_ShowFinished();
+    else if (event_right)
+    {
+    }
 
-        ui_state = UI_WAIT_RECORD;
+    else if (event_center)
+    {
+        if (menu_index == MENU_RECORD)
+        {
+            DISPLAY_ShowRecording();
+
+            AudioRecorder_Record(ADC_2);
+
+            DISPLAY_ShowSaving();
+
+            AudioRecorder_SaveToFlash();
+
+            audio_available = true;
+
+            DISPLAY_ShowRecordFinished();
+        }
+
+        else if (menu_index == MENU_PLAY)
+        {
+            if (audio_available)
+            {
+                DISPLAY_ShowPlaying();
+
+                AudioPlayer_Init();
+                AudioPlayer_PlayFromFlash();
+
+                DISPLAY_Init();
+                DISPLAY_ShowFinished();
+            }
+            else
+            {
+                DISPLAY_ShowPlayPrompt();
+            }
+        }
+
+        else if (menu_index == MENU_SHOW_SIGNAL)
+        {
+            if (audio_available)
+            {
+                DISPLAY_DrawRecordedSignal(
+                    AudioRecorder_GetBuffer(),
+                    AudioRecorder_GetSampleCount()
+                );
+            }
+            else
+            {
+                DISPLAY_ShowPlayPrompt();
+            }
+        }
     }
 }

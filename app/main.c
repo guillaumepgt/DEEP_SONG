@@ -21,9 +21,16 @@ int main(void)
 
     while (1)
     {
-    	bool up = BUTTON_IsPressed(BUTTON_UP);
-    	UI_Process(up);
-    	HAL_Delay(10);
+        UI_Input_t input;
 
+        input.center = BUTTON_IsPressed(BUTTON_CENTER);
+        input.up     = BUTTON_IsPressed(BUTTON_UP);
+        input.down   = BUTTON_IsPressed(BUTTON_DOWN);
+        input.left   = BUTTON_IsPressed(BUTTON_LEFT);
+        input.right  = BUTTON_IsPressed(BUTTON_RIGHT);
+
+        UI_Process(input);
+
+        HAL_Delay(10);
     }
 }

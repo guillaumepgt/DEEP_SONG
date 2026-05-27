@@ -36,45 +36,6 @@ void DISPLAY_Init(void)
 #define C_STATUS_OK    RGB565(46, 204, 113)
 
 
-void DISPLAY_DrawBeautifulUI(void)
-{
-    ILI9341_Rotate(ILI9341_Orientation_Landscape_1);
-
-    ILI9341_Fill(C_BACKGROUND);
-
-    ILI9341_DrawFilledRectangle(0, 0, 320, 30, C_HEADER);
-    ILI9341_Puts(10, 8, "SYSTEME DE CONTROLE", &Font_7x10, C_CARD_BG, C_HEADER);
-
-
-    ILI9341_DrawFilledRectangle(14, 44, 151, 121, C_CARD_BORDER);
-    ILI9341_DrawFilledRectangle(15, 45, 150, 120, C_CARD_BG);
-
-    ILI9341_DrawFilledRectangle(15, 45, 150, 48, C_ACCENT_TEMP);
-
-    ILI9341_Puts(25, 55, "Temp. Moteurrrrr", &Font_7x10, C_TEXT_LIGHT, C_CARD_BG);
-
-    int temperature = 42;
-    ILI9341_printf(45, 80, &Font_7x10, C_ACCENT_TEMP, C_CARD_BG, "%d C", temperature);
-
-    ILI9341_DrawFilledRectangle(164, 44, 301, 121, C_CARD_BORDER);
-    ILI9341_DrawFilledRectangle(165, 45, 300, 120, C_CARD_BG);
-
-    ILI9341_DrawFilledRectangle(165, 45, 300, 48, C_ACCENT_HUM);
-
-    ILI9341_Puts(175, 55, "Vitesse RPM", &Font_7x10, C_TEXT_LIGHT, C_CARD_BG);
-
-    int vitesse = 1450;
-    ILI9341_printf(185, 80, &Font_7x10, C_ACCENT_HUM, C_CARD_BG, "%d", vitesse);
-
-    ILI9341_DrawFilledRectangle(14, 139, 301, 186, C_CARD_BORDER);
-    ILI9341_DrawFilledRectangle(15, 140, 300, 185, C_CARD_BG);
-
-    ILI9341_Puts(25, 150, "Etat du systeme", &Font_7x10, C_TEXT_LIGHT, C_CARD_BG);
-
-    ILI9341_DrawFilledCircle(40, 170, 6, C_STATUS_OK);
-    ILI9341_Puts(55, 165, "En fonctionnement normal", &Font_7x10, C_TEXT_MAIN, C_CARD_BG);
-}
-
 void DISPLAY_DrawGraphScreen(void)
 {
     ILI9341_Fill(C_BACKGROUND);
@@ -87,27 +48,6 @@ void DISPLAY_DrawGraphScreen(void)
     ILI9341_Puts(20, 35, "Signal brut (0-4095)", &Font_7x10, C_TEXT_LIGHT, C_BACKGROUND);
 }
 
-void DISPLAY_UpdateGraph(uint16_t adc_value)
-{
-    static uint16_t current_x = 21;
-
-    if(adc_value > 4095) adc_value = 4095;
-
-    uint16_t y = 220 - ((adc_value * 170) / 4095);
-
-    uint16_t clear_x = current_x + 2;
-    if(clear_x > 296) clear_x = 21;
-
-    ILI9341_DrawFilledRectangle(clear_x, 50, clear_x + 3, 220, C_CARD_BG);
-
-    ILI9341_DrawFilledRectangle(current_x, y-1, current_x+1, y+1, C_ACCENT_TEMP);
-
-    current_x++;
-
-    if(current_x > 298) {
-        current_x = 21;
-    }
-}
 
 static void DISPLAY_DrawMessageScreen(char *title,
                                       char *line1,
@@ -166,9 +106,9 @@ void DISPLAY_ShowSaving(void)
 void DISPLAY_ShowPlayPrompt(void)
 {
     DISPLAY_DrawMessageScreen(
-        "AUDIO MEMORISE",
-        "Rappuyez sur le bouton",
-        "pour lire"
+        "ERREUR",
+        "Veuillez enregistrer",
+        "un signal d'abord"
     );
 }
 
@@ -192,6 +132,15 @@ void DISPLAY_ShowFinished(void)
     );
 }
 
+void DISPLAY_ShowRecordFinished(void)
+{
+    DISPLAY_DrawMessageScreen(
+        "ENREGISTREMENT",
+        "Enregistrement terminé",
+		0
+    );
+}
+
 void DISPLAY_DrawRecordedSignal(const uint16_t *samples, uint32_t sample_count)
 {
     uint16_t x;
@@ -206,7 +155,7 @@ void DISPLAY_DrawRecordedSignal(const uint16_t *samples, uint32_t sample_count)
     }
 
     /*
-     * On réutilise l'écran de graphe existant.
+     * On utilise l'écran de graphe
      */
     DISPLAY_DrawGraphScreen();
 
@@ -251,6 +200,7 @@ void DISPLAY_DrawRecordedSignal(const uint16_t *samples, uint32_t sample_count)
          */
         y = 220 - ((adc_value * 170) / 4095);
 
+
         ILI9341_DrawFilledRectangle(
             x,
             y - 1,
@@ -259,4 +209,40 @@ void DISPLAY_DrawRecordedSignal(const uint16_t *samples, uint32_t sample_count)
             C_ACCENT_TEMP
         );
     }
+}
+
+void DISPLAY_DrawMenu(uint8_t selected_index)
+{
+    ILI9341_Fill(C_BACKGROUND);
+
+    ILI9341_DrawFilledRectangle(0, 0, 320, 30, C_HEADER);
+    ILI9341_Puts(10, 8, "MENU AUDIO", &Font_7x10, C_CARD_BG, C_HEADER);
+
+    ILI9341_DrawFilledRectangle(19, 49, 301, 221, C_CARD_BORDER);
+    ILI9341_DrawFilledRectangle(20, 50, 300, 220, C_CARD_BG);
+
+    const char *items[] =
+    {
+        "Enregistrer",
+        "Lire audio",
+        "Afficher signal"
+    };
+
+    for (uint8_t i = 0; i < 3; i++)
+    {
+        uint16_t y = 75 + i * 35;
+
+        if (i == selected_index)
+        {
+            ILI9341_DrawFilledRectangle(35, y - 5, 285, y + 18, C_ACCENT_HUM);
+            ILI9341_Puts(45, y, ">", &Font_7x10, C_CARD_BG, C_ACCENT_HUM);
+            ILI9341_Puts(65, y, (char *)items[i], &Font_7x10, C_CARD_BG, C_ACCENT_HUM);
+        }
+        else
+        {
+            ILI9341_Puts(65, y, (char *)items[i], &Font_7x10, C_TEXT_MAIN, C_CARD_BG);
+        }
+    }
+
+    ILI9341_Puts(35, 200, "H/B: naviguer  Centre: OK", &Font_7x10, C_TEXT_LIGHT, C_CARD_BG);
 }
