@@ -9,6 +9,10 @@
 #include "tft_ili9341/stm32g4_ili9341.h"
 #include "stm32g4_gpio.h"
 #include "stm32g4_adc.h"
+#include <stdio.h>
+#include <stdbool.h>
+
+extern bool fuzz_actif;
 
 void DISPLAY_Init(void)
 {
@@ -115,11 +119,21 @@ void DISPLAY_ShowPlayPrompt(void)
 
 void DISPLAY_ShowPlaying(void)
 {
-    DISPLAY_DrawMessageScreen(
-        "LECTURE AUDIO",
-        "Lecture en cours...",
-        0
-    );
+    if(fuzz_actif)
+    {
+       DISPLAY_DrawMessageScreen(
+           "LECTURE AUDIO",
+           "Lecture en cours...",
+		   "Avec effet Fuzz"
+        );
+    }
+    else{
+        DISPLAY_DrawMessageScreen(
+            "LECTURE AUDIO",
+            "Lecture en cours...",
+            0
+        );
+    }
 }
 
 

@@ -11,8 +11,9 @@
 #include "config.h"
 #include "stm32g4_dac.h"
 #include <stdint.h>
+#include <stdbool.h>
 
 void AudioPlayer_Init(void);
-void AudioPlayer_PlayFromFlash(void);
+void AudioPlayer_PlayFromFlash(bool activer_fuzz);
 
 #endif

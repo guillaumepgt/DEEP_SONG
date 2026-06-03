@@ -4,6 +4,7 @@
 #include "audio_player.h"
 #include "stm32g4_adc.h"
 #include <stdio.h>
+#include <stdbool.h>
 
 typedef enum
 {
@@ -15,6 +16,8 @@ typedef enum
 
 static uint8_t menu_index = 0;
 static bool audio_available = false;
+
+bool fuzz_actif=false;
 
 static UI_Input_t previous_input;
 
@@ -32,6 +35,7 @@ void UI_Init(void)
 
     menu_index = 0;
     audio_available = false;
+    fuzz_actif=false;
 
     previous_input.center = false;
     previous_input.up = false;
@@ -78,6 +82,10 @@ void UI_Process(UI_Input_t input)
 
     else if (event_right)
     {
+    	if(menu_index==MENU_PLAY)
+    	{
+    	fuzz_actif= !fuzz_actif;
+    	}
     }
 
     else if (event_center)
@@ -104,7 +112,7 @@ void UI_Process(UI_Input_t input)
                 DISPLAY_ShowPlaying();
 
                 AudioPlayer_Init();
-                AudioPlayer_PlayFromFlash();
+                AudioPlayer_PlayFromFlash(fuzz_actif);
 
                 DISPLAY_Init();
                 DISPLAY_ShowFinished();
