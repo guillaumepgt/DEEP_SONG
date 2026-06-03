@@ -1,12 +1,16 @@
-/*
- * boutton.c
- *
- *  Created on: 13 mars 2026
- *      Author: Basile
+/**
+ *******************************************************************************
+ * @file    boutton.c
+ * @author  Basile, Titouan, Guillaume
+ * @date    13 mars 2026
+ * @brief   Implémentation des fonctions de lecture des boutons poussoirs.
+ *******************************************************************************
  */
+
 #include "boutton.h"
 #include "stm32g4_gpio.h"
 
+/** @brief Tableau des ports GPIO associés à chaque bouton (aligné sur l'énumération ButtonId) */
 static GPIO_TypeDef* buttonPorts[BUTTON_COUNT] = {
         GPIOA, // center
         GPIOB, // up
@@ -15,11 +19,12 @@ static GPIO_TypeDef* buttonPorts[BUTTON_COUNT] = {
         GPIOA  // right
 };
 
+/** @brief Tableau des numéros de broches associés à chaque bouton */
 static uint16_t buttonPins[BUTTON_COUNT] = {
-        GPIO_PIN_0, // center
-        GPIO_PIN_0, // up
-        GPIO_PIN_4, // down
-        GPIO_PIN_6, // left
+        GPIO_PIN_0,  // center
+        GPIO_PIN_0,  // up
+        GPIO_PIN_4,  // down
+        GPIO_PIN_6,  // left
         GPIO_PIN_12  // right
 };
 

@@ -1,3 +1,13 @@
+/**
+ *******************************************************************************
+ * @file    main.c
+ * @author  Basile, Titouan, Guillaume
+ * @date    Juin 2026
+ * @brief   Fichier d'entrée principal (Main Loop) du projet Carte Son STM32.
+ * @details Lance la boucle d'exécution logicielle et cadence le scrutation IHM.
+ *******************************************************************************
+ */
+
 #include "config.h"
 #include "stm32g4_sys.h"
 #include "stm32g4_systick.h"
@@ -9,6 +19,10 @@
 #include <stdlib.h>
 #include "ui.h"
 
+/**
+ * @brief  Point d'entrée de l'application embarquée.
+ * @return Entier (jamais atteint en embarqué).
+ */
 int main(void)
 {
     HAL_Init();

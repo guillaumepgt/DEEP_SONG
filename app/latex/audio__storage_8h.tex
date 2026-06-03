@@ -1,0 +1,68 @@
+\doxysection{audio\+\_\+storage.\+h File Reference}
+\hypertarget{audio__storage_8h}{}\label{audio__storage_8h}\index{audio\_storage.h@{audio\_storage.h}}
+
+
+Gestionnaire de la mémoire non-\/volatile pour les données audio.  
+
+
+{\ttfamily \+\#include "{}config.\+h"{}}\newline
+{\ttfamily \+\#include "{}stm32g4\+\_\+flash.\+h"{}}\newline
+{\ttfamily \+\#include "{}audio\+\_\+recorder.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{audio__storage_8h_ad9e99752fe8d63a030b4f05d51450ea7}{Audio\+Storage\+\_\+\+Read\+From\+Flash}} (uint16\+\_\+t \texorpdfstring{$\ast$}{*}buffer, uint32\+\_\+t max\+\_\+samples)
+\begin{DoxyCompactList}\small\item\em Lit les octets stockés en Flash et recrée les mots de 12 bits en RAM. \end{DoxyCompactList}\item 
+uint32\+\_\+t \doxymbox{\hyperlink{audio__storage_8h_a53b1a9a82250f5be8e4e7b6d7d6df190}{Audio\+Storage\+\_\+\+Get\+Stored\+Sample\+Count}} (void)
+\begin{DoxyCompactList}\small\item\em Retourne la quantité globale de samples définis dans la configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestionnaire de la mémoire non-\/volatile pour les données audio. 
+
+\begin{DoxyAuthor}{Author}
+Basile, Titouan, Guillaume 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Avril 2026  
+\end{DoxyDate}
+
+
+\label{audio__storage_8h_doc-func-members}
+\Hypertarget{audio__storage_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{audio__storage_8h_a53b1a9a82250f5be8e4e7b6d7d6df190}\index{audio\_storage.h@{audio\_storage.h}!AudioStorage\_GetStoredSampleCount@{AudioStorage\_GetStoredSampleCount}}
+\index{AudioStorage\_GetStoredSampleCount@{AudioStorage\_GetStoredSampleCount}!audio\_storage.h@{audio\_storage.h}}
+\doxysubsubsection{\texorpdfstring{AudioStorage\_GetStoredSampleCount()}{AudioStorage\_GetStoredSampleCount()}}
+{\footnotesize\ttfamily \label{audio__storage_8h_a53b1a9a82250f5be8e4e7b6d7d6df190} 
+uint32\+\_\+t Audio\+Storage\+\_\+\+Get\+Stored\+Sample\+Count (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Retourne la quantité globale de samples définis dans la configuration. 
+
+\begin{DoxyReturn}{Returns}
+Nombre d\textquotesingle{}échantillons (\doxylink{audio__recorder_8h_a91b075f03ef8d56e34670a2ff2cbc559}{AUDIO\+\_\+\+SAMPLE\+\_\+\+COUNT}). 
+\end{DoxyReturn}
+\Hypertarget{audio__storage_8h_ad9e99752fe8d63a030b4f05d51450ea7}\index{audio\_storage.h@{audio\_storage.h}!AudioStorage\_ReadFromFlash@{AudioStorage\_ReadFromFlash}}
+\index{AudioStorage\_ReadFromFlash@{AudioStorage\_ReadFromFlash}!audio\_storage.h@{audio\_storage.h}}
+\doxysubsubsection{\texorpdfstring{AudioStorage\_ReadFromFlash()}{AudioStorage\_ReadFromFlash()}}
+{\footnotesize\ttfamily \label{audio__storage_8h_ad9e99752fe8d63a030b4f05d51450ea7} 
+void Audio\+Storage\+\_\+\+Read\+From\+Flash (\begin{DoxyParamCaption}\item[{uint16\+\_\+t \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{uint32\+\_\+t}]{max\+\_\+samples}{}\end{DoxyParamCaption})}
+
+
+
+Lit les octets stockés en Flash et recrée les mots de 12 bits en RAM. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Table de destination en RAM pour les échantillons 12 bits restaurés. \\
+\hline
+{\em max\+\_\+samples} & Capacité maximale de stockage du buffer de destination. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}

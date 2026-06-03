@@ -1,0 +1,41 @@
+\doxysection{audio\+\_\+recorder.\+h}
+\hypertarget{audio__recorder_8h_source}{}\label{audio__recorder_8h_source}\doxymbox{\hyperlink{audio__recorder_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ AUDIO\_RECORDER\_H}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ AUDIO\_RECORDER\_H}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{config_8h}{config.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}stm32g4\_adc.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}stm32g4\_flash.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ AUDIO\_SAMPLE\_RATE\_HZ\ \ \ \ \ 1000U\ }}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ AUDIO\_DURATION\_MS\ \ \ \ \ \ \ \ 1920U\ }}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ AUDIO\_SAMPLE\_COUNT\ \ \ \ \ \ \ ((AUDIO\_SAMPLE\_RATE\_HZ\ *\ AUDIO\_DURATION\_MS)\ /\ 1000U)\ }}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \doxymbox{\hyperlink{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818a09688b7a88e0ba2d712a3d9a73604b15}{AUDIO\_OK}}\ =\ 0,\ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \doxymbox{\hyperlink{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818a153dd3e294e6d11c90270dc0279d6370}{AUDIO\_ERROR}}\ \ \ \ \ }
+\DoxyCodeLine{00031\ \}\ \doxymbox{\hyperlink{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818}{AudioStatus\_t}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{audio__recorder_8h_ae04dc5bcc283fa870ea7ec239dc61ce1}{AudioRecorder\_Init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00045\ \doxymbox{\hyperlink{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818}{AudioStatus\_t}}\ \doxymbox{\hyperlink{audio__recorder_8h_a01314204b616b63f987c4ddff913fa3d}{AudioRecorder\_Record}}(adc\_id\_e\ channel);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00052\ \doxymbox{\hyperlink{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818}{AudioStatus\_t}}\ \doxymbox{\hyperlink{audio__recorder_8h_abacbd52d7fe5311ea9c2dd1a1543ee1f}{AudioRecorder\_SaveToFlash}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{audio__recorder_8h_aaf4aeb89d8a49dc1e40b53d34718a635}{AudioRecorder\_IsFinished}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00065\ uint16\_t\ \doxymbox{\hyperlink{audio__recorder_8h_ad2440432f2b76a1f853918b8dfc4161a}{AudioRecorder\_GetSample}}(uint32\_t\ index);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00071\ uint32\_t\ \doxymbox{\hyperlink{audio__recorder_8h_af4d14dfc482c7c33bb525feefcd1f478}{AudioRecorder\_GetSampleCount}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{const}\ uint16\_t\ *\doxymbox{\hyperlink{audio__recorder_8h_ab7221c5787757aa7047d11984e595825}{AudioRecorder\_GetBuffer}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

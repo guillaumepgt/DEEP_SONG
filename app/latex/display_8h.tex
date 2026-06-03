@@ -1,0 +1,183 @@
+\doxysection{display.\+h File Reference}
+\hypertarget{display_8h}{}\label{display_8h}\index{display.h@{display.h}}
+
+
+Déclarations des fonctions de gestion de l\textquotesingle{}écran graphique LCD ILI9341.  
+
+
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{display_8h_a6a8be97ca5089ec8a5498d621639e494}{DISPLAY\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialise le bus, les broches de contrôle GPIO et l\textquotesingle{}orientation du contrôleur ILI9341. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8h_aa2e61605857360486f5a1e9228f69a2a}{DISPLAY\+\_\+\+Draw\+Graph\+Screen}} (void)
+\begin{DoxyCompactList}\small\item\em Génère le fond d\textquotesingle{}écran et la grille pour le mode Oscilloscope graphique. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8h_ae1b9b16d7de0de2245ca560910d4e4c9}{DISPLAY\+\_\+\+Show\+Record\+Prompt}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}invite de commande pour démarrer l\textquotesingle{}enregistrement. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8h_ac82a4a7d289814490d444f91b32fd51e}{DISPLAY\+\_\+\+Show\+Recording}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}écran animé d\textquotesingle{}enregistrement en cours. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8h_a824b07e4bff761be06fe2a1314a3c582}{DISPLAY\+\_\+\+Show\+Saving}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche le message de blocage durant l\textquotesingle{}écriture Flash. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8h_a0a73b4285461b2141cab4091610c852f}{DISPLAY\+\_\+\+Show\+Play\+Prompt}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}erreur si la Flash ne contient aucune donnée. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8h_aa6a4412fbccab40b11d8a4c0e8c5a8aa}{DISPLAY\+\_\+\+Show\+Playing}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}animation de lecture de la piste audio. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8h_a6ffd1eecb3182e649cde88d9dd595c6d}{DISPLAY\+\_\+\+Show\+Finished}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}écran de fin de lecture audio. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8h_a0facb8814880332a2a80c4f762829832}{DISPLAY\+\_\+\+Show\+Record\+Finished}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche la fin de la capture analogique. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8h_ad35260d626ffdfeef9a18b20bbb63580}{DISPLAY\+\_\+\+Draw\+Recorded\+Signal}} (const uint16\+\_\+t \texorpdfstring{$\ast$}{*}samples, uint32\+\_\+t sample\+\_\+count)
+\begin{DoxyCompactList}\small\item\em Trace la courbe temporelle des données audio enregistrées à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8h_a2be9367cf608bb9c83d616558b918f7c}{DISPLAY\+\_\+\+Draw\+Menu}} (uint8\+\_\+t selected\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Affiche le menu de sélection principal avec surbrillance dynamique. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Déclarations des fonctions de gestion de l\textquotesingle{}écran graphique LCD ILI9341. 
+
+\begin{DoxyAuthor}{Author}
+Basile, Titouan, Guillaume 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11 mars 2026  
+\end{DoxyDate}
+
+
+\label{display_8h_doc-func-members}
+\Hypertarget{display_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{display_8h_aa2e61605857360486f5a1e9228f69a2a}\index{display.h@{display.h}!DISPLAY\_DrawGraphScreen@{DISPLAY\_DrawGraphScreen}}
+\index{DISPLAY\_DrawGraphScreen@{DISPLAY\_DrawGraphScreen}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_DrawGraphScreen()}{DISPLAY\_DrawGraphScreen()}}
+{\footnotesize\ttfamily \label{display_8h_aa2e61605857360486f5a1e9228f69a2a} 
+void DISPLAY\+\_\+\+Draw\+Graph\+Screen (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Génère le fond d\textquotesingle{}écran et la grille pour le mode Oscilloscope graphique. 
+
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}
+\Hypertarget{display_8h_a2be9367cf608bb9c83d616558b918f7c}\index{display.h@{display.h}!DISPLAY\_DrawMenu@{DISPLAY\_DrawMenu}}
+\index{DISPLAY\_DrawMenu@{DISPLAY\_DrawMenu}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_DrawMenu()}{DISPLAY\_DrawMenu()}}
+{\footnotesize\ttfamily \label{display_8h_a2be9367cf608bb9c83d616558b918f7c} 
+void DISPLAY\+\_\+\+Draw\+Menu (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{selected\+\_\+index}{}\end{DoxyParamCaption})}
+
+
+
+Affiche le menu de sélection principal avec surbrillance dynamique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em selected\+\_\+index} & Index de la ligne actuellement pointée (0 à 2). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}
+\Hypertarget{display_8h_ad35260d626ffdfeef9a18b20bbb63580}\index{display.h@{display.h}!DISPLAY\_DrawRecordedSignal@{DISPLAY\_DrawRecordedSignal}}
+\index{DISPLAY\_DrawRecordedSignal@{DISPLAY\_DrawRecordedSignal}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_DrawRecordedSignal()}{DISPLAY\_DrawRecordedSignal()}}
+{\footnotesize\ttfamily \label{display_8h_ad35260d626ffdfeef9a18b20bbb63580} 
+void DISPLAY\+\_\+\+Draw\+Recorded\+Signal (\begin{DoxyParamCaption}\item[{const uint16\+\_\+t \texorpdfstring{$\ast$}{*}}]{samples}{, }\item[{uint32\+\_\+t}]{sample\+\_\+count}{}\end{DoxyParamCaption})}
+
+
+
+Trace la courbe temporelle des données audio enregistrées à l\textquotesingle{}écran. 
+
+Projette graphiquement le repère \+[Indice, Tension]\+ sur la géométrie de l\textquotesingle{}afficheur. 
+\begin{DoxyParams}{Parameters}
+{\em samples} & Tableau contenant les amplitudes 12 bits à dessiner. \\
+\hline
+{\em sample\+\_\+count} & Quantité de points composants le vecteur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}
+\Hypertarget{display_8h_a6a8be97ca5089ec8a5498d621639e494}\index{display.h@{display.h}!DISPLAY\_Init@{DISPLAY\_Init}}
+\index{DISPLAY\_Init@{DISPLAY\_Init}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_Init()}{DISPLAY\_Init()}}
+{\footnotesize\ttfamily \label{display_8h_a6a8be97ca5089ec8a5498d621639e494} 
+void DISPLAY\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise le bus, les broches de contrôle GPIO et l\textquotesingle{}orientation du contrôleur ILI9341. 
+
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}
+\Hypertarget{display_8h_a6ffd1eecb3182e649cde88d9dd595c6d}\index{display.h@{display.h}!DISPLAY\_ShowFinished@{DISPLAY\_ShowFinished}}
+\index{DISPLAY\_ShowFinished@{DISPLAY\_ShowFinished}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_ShowFinished()}{DISPLAY\_ShowFinished()}}
+{\footnotesize\ttfamily \label{display_8h_a6ffd1eecb3182e649cde88d9dd595c6d} 
+void DISPLAY\+\_\+\+Show\+Finished (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}écran de fin de lecture audio. 
+
+\Hypertarget{display_8h_aa6a4412fbccab40b11d8a4c0e8c5a8aa}\index{display.h@{display.h}!DISPLAY\_ShowPlaying@{DISPLAY\_ShowPlaying}}
+\index{DISPLAY\_ShowPlaying@{DISPLAY\_ShowPlaying}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_ShowPlaying()}{DISPLAY\_ShowPlaying()}}
+{\footnotesize\ttfamily \label{display_8h_aa6a4412fbccab40b11d8a4c0e8c5a8aa} 
+void DISPLAY\+\_\+\+Show\+Playing (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}animation de lecture de la piste audio. 
+
+\Hypertarget{display_8h_a0a73b4285461b2141cab4091610c852f}\index{display.h@{display.h}!DISPLAY\_ShowPlayPrompt@{DISPLAY\_ShowPlayPrompt}}
+\index{DISPLAY\_ShowPlayPrompt@{DISPLAY\_ShowPlayPrompt}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_ShowPlayPrompt()}{DISPLAY\_ShowPlayPrompt()}}
+{\footnotesize\ttfamily \label{display_8h_a0a73b4285461b2141cab4091610c852f} 
+void DISPLAY\+\_\+\+Show\+Play\+Prompt (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}erreur si la Flash ne contient aucune donnée. 
+
+\Hypertarget{display_8h_a0facb8814880332a2a80c4f762829832}\index{display.h@{display.h}!DISPLAY\_ShowRecordFinished@{DISPLAY\_ShowRecordFinished}}
+\index{DISPLAY\_ShowRecordFinished@{DISPLAY\_ShowRecordFinished}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_ShowRecordFinished()}{DISPLAY\_ShowRecordFinished()}}
+{\footnotesize\ttfamily \label{display_8h_a0facb8814880332a2a80c4f762829832} 
+void DISPLAY\+\_\+\+Show\+Record\+Finished (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche la fin de la capture analogique. 
+
+\Hypertarget{display_8h_ac82a4a7d289814490d444f91b32fd51e}\index{display.h@{display.h}!DISPLAY\_ShowRecording@{DISPLAY\_ShowRecording}}
+\index{DISPLAY\_ShowRecording@{DISPLAY\_ShowRecording}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_ShowRecording()}{DISPLAY\_ShowRecording()}}
+{\footnotesize\ttfamily \label{display_8h_ac82a4a7d289814490d444f91b32fd51e} 
+void DISPLAY\+\_\+\+Show\+Recording (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}écran animé d\textquotesingle{}enregistrement en cours. 
+
+\Hypertarget{display_8h_ae1b9b16d7de0de2245ca560910d4e4c9}\index{display.h@{display.h}!DISPLAY\_ShowRecordPrompt@{DISPLAY\_ShowRecordPrompt}}
+\index{DISPLAY\_ShowRecordPrompt@{DISPLAY\_ShowRecordPrompt}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_ShowRecordPrompt()}{DISPLAY\_ShowRecordPrompt()}}
+{\footnotesize\ttfamily \label{display_8h_ae1b9b16d7de0de2245ca560910d4e4c9} 
+void DISPLAY\+\_\+\+Show\+Record\+Prompt (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}invite de commande pour démarrer l\textquotesingle{}enregistrement. 
+
+\Hypertarget{display_8h_a824b07e4bff761be06fe2a1314a3c582}\index{display.h@{display.h}!DISPLAY\_ShowSaving@{DISPLAY\_ShowSaving}}
+\index{DISPLAY\_ShowSaving@{DISPLAY\_ShowSaving}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_ShowSaving()}{DISPLAY\_ShowSaving()}}
+{\footnotesize\ttfamily \label{display_8h_a824b07e4bff761be06fe2a1314a3c582} 
+void DISPLAY\+\_\+\+Show\+Saving (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche le message de blocage durant l\textquotesingle{}écriture Flash. 
+

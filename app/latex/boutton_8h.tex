@@ -1,0 +1,142 @@
+\doxysection{boutton.\+h File Reference}
+\hypertarget{boutton_8h}{}\label{boutton_8h}\index{boutton.h@{boutton.h}}
+
+
+Gestionnaire des boutons de la carte de développement.  
+
+
+{\ttfamily \+\#include "{}stm32g4xx\+\_\+hal.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{boutton_8h_a687f94d4d3be4db86a833082ecdf980a}{BUTTON\+\_\+\+COUNT}}~5
+\begin{DoxyCompactList}\small\item\em Nombre total de boutons configurés sur le système. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{boutton_8h_aa60e15d86cfe7033f28c7d066c85266e}{Button\+Id}} \{ \newline
+\doxymbox{\hyperlink{boutton_8h_aa60e15d86cfe7033f28c7d066c85266ea81f2f85b55c96efd16c55df6441b2fd3}{BUTTON\+\_\+\+CENTER}} = 0
+, \doxymbox{\hyperlink{boutton_8h_aa60e15d86cfe7033f28c7d066c85266ea37666936297216dce293b0aa31c474b8}{BUTTON\+\_\+\+UP}} = 1
+, \doxymbox{\hyperlink{boutton_8h_aa60e15d86cfe7033f28c7d066c85266ea0c7746cfbcac16484b2266e6f51e5e0b}{BUTTON\+\_\+\+DOWN}} = 2
+, \doxymbox{\hyperlink{boutton_8h_aa60e15d86cfe7033f28c7d066c85266ea55dc0d53615e28ee8af66827bee48e4e}{BUTTON\+\_\+\+LEFT}} = 3
+, \newline
+\doxymbox{\hyperlink{boutton_8h_aa60e15d86cfe7033f28c7d066c85266ea13046edd6d64a0de5821b5ff4c7581ce}{BUTTON\+\_\+\+RIGHT}} = 4
+ \}
+\begin{DoxyCompactList}\small\item\em Identifiants uniques pour chaque bouton du joystick/\+clavier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{boutton_8h_aa550fbf7e9db2cbff32e2e878b25e56b}{BUTTON\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialise les broches GPIO des 5 boutons en entrée numérique. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{boutton_8h_a0c5cae4065e0a050e5da204fcffc132a}{BUTTON\+\_\+\+Is\+Pressed}} (\doxymbox{\hyperlink{boutton_8h_aa60e15d86cfe7033f28c7d066c85266e}{Button\+Id}} button)
+\begin{DoxyCompactList}\small\item\em Vérifie l\textquotesingle{}état de pression d\textquotesingle{}un bouton spécifique. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gestionnaire des boutons de la carte de développement. 
+
+\begin{DoxyAuthor}{Author}
+Basile, Titouan, Guillaume 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+13 mars 2026  
+\end{DoxyDate}
+
+
+\label{boutton_8h_doc-define-members}
+\Hypertarget{boutton_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{boutton_8h_a687f94d4d3be4db86a833082ecdf980a}\index{boutton.h@{boutton.h}!BUTTON\_COUNT@{BUTTON\_COUNT}}
+\index{BUTTON\_COUNT@{BUTTON\_COUNT}!boutton.h@{boutton.h}}
+\doxysubsubsection{\texorpdfstring{BUTTON\_COUNT}{BUTTON\_COUNT}}
+{\footnotesize\ttfamily \label{boutton_8h_a687f94d4d3be4db86a833082ecdf980a} 
+\+\#define BUTTON\+\_\+\+COUNT~5}
+
+
+
+Nombre total de boutons configurés sur le système. 
+
+
+
+\label{boutton_8h_doc-enum-members}
+\Hypertarget{boutton_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{boutton_8h_aa60e15d86cfe7033f28c7d066c85266e}\index{boutton.h@{boutton.h}!ButtonId@{ButtonId}}
+\index{ButtonId@{ButtonId}!boutton.h@{boutton.h}}
+\doxysubsubsection{\texorpdfstring{ButtonId}{ButtonId}}
+{\footnotesize\ttfamily \label{boutton_8h_aa60e15d86cfe7033f28c7d066c85266e} 
+enum \doxymbox{\hyperlink{boutton_8h_aa60e15d86cfe7033f28c7d066c85266e}{Button\+Id}}}
+
+
+
+Identifiants uniques pour chaque bouton du joystick/\+clavier. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BUTTON\_CENTER@{BUTTON\_CENTER}!boutton.h@{boutton.h}}
+\index{boutton.h@{boutton.h}!BUTTON\_CENTER@{BUTTON\_CENTER}}
+}\Hypertarget{boutton_8h_aa60e15d86cfe7033f28c7d066c85266ea81f2f85b55c96efd16c55df6441b2fd3}\label{boutton_8h_aa60e15d86cfe7033f28c7d066c85266ea81f2f85b55c96efd16c55df6441b2fd3} 
+BUTTON\+\_\+\+CENTER&Bouton central (Validation /\+ OK). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BUTTON\_UP@{BUTTON\_UP}!boutton.h@{boutton.h}}
+\index{boutton.h@{boutton.h}!BUTTON\_UP@{BUTTON\_UP}}
+}\Hypertarget{boutton_8h_aa60e15d86cfe7033f28c7d066c85266ea37666936297216dce293b0aa31c474b8}\label{boutton_8h_aa60e15d86cfe7033f28c7d066c85266ea37666936297216dce293b0aa31c474b8} 
+BUTTON\+\_\+\+UP&Bouton Haut (Navigation). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BUTTON\_DOWN@{BUTTON\_DOWN}!boutton.h@{boutton.h}}
+\index{boutton.h@{boutton.h}!BUTTON\_DOWN@{BUTTON\_DOWN}}
+}\Hypertarget{boutton_8h_aa60e15d86cfe7033f28c7d066c85266ea0c7746cfbcac16484b2266e6f51e5e0b}\label{boutton_8h_aa60e15d86cfe7033f28c7d066c85266ea0c7746cfbcac16484b2266e6f51e5e0b} 
+BUTTON\+\_\+\+DOWN&Bouton Bas (Navigation). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BUTTON\_LEFT@{BUTTON\_LEFT}!boutton.h@{boutton.h}}
+\index{boutton.h@{boutton.h}!BUTTON\_LEFT@{BUTTON\_LEFT}}
+}\Hypertarget{boutton_8h_aa60e15d86cfe7033f28c7d066c85266ea55dc0d53615e28ee8af66827bee48e4e}\label{boutton_8h_aa60e15d86cfe7033f28c7d066c85266ea55dc0d53615e28ee8af66827bee48e4e} 
+BUTTON\+\_\+\+LEFT&Bouton Gauche (Retour). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BUTTON\_RIGHT@{BUTTON\_RIGHT}!boutton.h@{boutton.h}}
+\index{boutton.h@{boutton.h}!BUTTON\_RIGHT@{BUTTON\_RIGHT}}
+}\Hypertarget{boutton_8h_aa60e15d86cfe7033f28c7d066c85266ea13046edd6d64a0de5821b5ff4c7581ce}\label{boutton_8h_aa60e15d86cfe7033f28c7d066c85266ea13046edd6d64a0de5821b5ff4c7581ce} 
+BUTTON\+\_\+\+RIGHT&Bouton Droite. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{boutton_8h_doc-func-members}
+\Hypertarget{boutton_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{boutton_8h_aa550fbf7e9db2cbff32e2e878b25e56b}\index{boutton.h@{boutton.h}!BUTTON\_Init@{BUTTON\_Init}}
+\index{BUTTON\_Init@{BUTTON\_Init}!boutton.h@{boutton.h}}
+\doxysubsubsection{\texorpdfstring{BUTTON\_Init()}{BUTTON\_Init()}}
+{\footnotesize\ttfamily \label{boutton_8h_aa550fbf7e9db2cbff32e2e878b25e56b} 
+void BUTTON\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise les broches GPIO des 5 boutons en entrée numérique. 
+
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}
+\Hypertarget{boutton_8h_a0c5cae4065e0a050e5da204fcffc132a}\index{boutton.h@{boutton.h}!BUTTON\_IsPressed@{BUTTON\_IsPressed}}
+\index{BUTTON\_IsPressed@{BUTTON\_IsPressed}!boutton.h@{boutton.h}}
+\doxysubsubsection{\texorpdfstring{BUTTON\_IsPressed()}{BUTTON\_IsPressed()}}
+{\footnotesize\ttfamily \label{boutton_8h_a0c5cae4065e0a050e5da204fcffc132a} 
+bool BUTTON\+\_\+\+Is\+Pressed (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{boutton_8h_aa60e15d86cfe7033f28c7d066c85266e}{Button\+Id}}}]{button}{}\end{DoxyParamCaption})}
+
+
+
+Vérifie l\textquotesingle{}état de pression d\textquotesingle{}un bouton spécifique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & Identifiant du bouton à tester (de type \doxylink{boutton_8h_aa60e15d86cfe7033f28c7d066c85266e}{Button\+Id}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si le bouton est pressé, false sinon. 
+\end{DoxyReturn}

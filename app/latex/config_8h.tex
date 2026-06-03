@@ -1,0 +1,379 @@
+\doxysection{config.\+h File Reference}
+\hypertarget{config_8h}{}\label{config_8h}\index{config.h@{config.h}}
+
+
+Fichier principal de configuration de votre projet sur carte Nucléo STM32\+G431\+KB. Permet d\textquotesingle{}activer les différents modules logiciels à votre disposition.  
+
+
+{\ttfamily \+\#include "{}stm32g4xx\+\_\+hal.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a0539be032702009fb24beec89c6fa0c0}{LED\+\_\+\+GREEN\+\_\+\+PIN}}~GPIO\+\_\+\+PIN\+\_\+8
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a35bd7f0ad1339fa50073bc23bd963566}{LED\+\_\+\+GREEN\+\_\+\+GPIO}}~GPIOB
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_ac6407fe6d080f184fa323e3734d80b15}{UART2\+\_\+\+ON\+\_\+\+PA3\+\_\+\+PA2}}
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a0c83a77ed4956800d2be900f5fcc2207}{UART1\+\_\+\+ON\+\_\+\+PA10\+\_\+\+PA9}}
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a837392f13b258c60487cb9b15bbbfd0c}{USE\+\_\+\+BSP\+\_\+\+TIMER}}~1
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a4330119d503803ecb5fc6ee60f88f491}{USE\+\_\+\+BSP\+\_\+\+EXTIT}}~1
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_afacc6ecc4901a729fac01bbea03deb51}{USE\+\_\+\+RTC}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_aaa136cd92f8e65d59edb1b0b4b99f7df}{USE\+\_\+\+ADC}}~1
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_acd1a09aeb92cb81a918863bf440a607b}{USE\+\_\+\+IN1}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_ad5484f32606a746f55c5939581b5820f}{USE\+\_\+\+IN2}}~1
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a4c0c97061e8b6ef7faf508b446aec049}{USE\+\_\+\+IN3}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a7ce1056d589584acd86e239c42edbd38}{USE\+\_\+\+IN4}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a999c7ee747d8dafe60637baba03a3f38}{USE\+\_\+\+IN10}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a9ec50f361bf59a286d6f4920413ee1eb}{USE\+\_\+\+IN13}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a25036d0271f38e2ebfb1a9b3cab953d2}{USE\+\_\+\+IN17}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a4731191921a5408ca8a3c06409d2e8c9}{USE\+\_\+\+DAC}}~1
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a15b71b6ebf1fb67ee009445dc781f412}{USE\+\_\+\+ILI9341}}~1
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_aed04f9e1f860acd98ea90ba2fac27d92}{USE\+\_\+\+XPT2046}}~1
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a8c8508975dbd69b42f0a32a9c4cbf9bd}{USE\+\_\+\+FONT7x10}}~1
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a1b0d6e01ca3a1a1421c72e1b132aeaa3}{USE\+\_\+\+FONT11x18}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_ab48fd4365b00a178471773bc5e54fade}{USE\+\_\+\+FONT16x26}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a5d43be38108cf5b44434cd9a9db7748e}{USE\+\_\+\+EPAPER}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a0a06f810121b1b478c8a1360b8028c8b}{USE\+\_\+\+WS2812}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_ae25eee2435f8d718ba539445d17803ad}{USE\+\_\+\+MPU6050}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a3cf214e322c86548ae33500ff6dbfb6e}{USE\+\_\+\+APDS9960}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_aa08c44e91364eff8bc5b05624c8937e2}{USE\+\_\+\+BMP180}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a0dc9bcfdc6e1389acf8634c9d024228f}{USE\+\_\+\+BH1750\+FVI}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_ab89947975b1e285dc2f5124b7acb2ff1}{USE\+\_\+\+DHT11}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_ad1f725205fb41df71f263324446af858}{USE\+\_\+\+DS18\+B20}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a7b402451e0ce97dedba5b386c7e25c8a}{USE\+\_\+\+YX6300}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a33158fd7d381ab76a55cf2795553294a}{USE\+\_\+\+MATRIX\+\_\+\+KEYBOARD}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a5306f27f2b580e8450b67153a866de92}{USE\+\_\+\+HCSR04}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a977812fb7d827ec35754b042d301137d}{USE\+\_\+\+GPS}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a8c84256cde1335b0fb37f1c82bdcefb1}{USE\+\_\+\+LD19}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_aef39c5a17e5f46341d9913c7192bd87e}{USE\+\_\+\+NFC03\+A1}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_aedc588909d706a0c330f1c1c1f857bf4}{USE\+\_\+\+VL53\+L0}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a9f9346c8ab4d16e068a11ccd03db2858}{USE\+\_\+\+MCP23017}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a23a7e96e89664f2539ebe845a5fc0c07}{USE\+\_\+\+MCP23\+S17}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a946297d7d599e95275c0615c9ee92853}{USE\+\_\+\+SD\+\_\+\+CARD}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a245635132118568c39098a87594244a9}{USE\+\_\+\+MOTOR\+\_\+\+DC}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_ad49930ef15af40fee393f8bd82881664}{USE\+\_\+\+I2C}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_afa3215f0aa766367f5d34bee80929152}{I2\+C\+\_\+\+TIMEOUT}}~5
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_a1acd02cc5bc9a5945addaf6e4f65d39a}{USE\+\_\+\+SPI}}~1
+\item 
+\+\#define \doxymbox{\hyperlink{config_8h_aa4308ba8ad3d4954fc5c60dc378cb728}{USE\+\_\+\+TESTBOARD}}~0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fichier principal de configuration de votre projet sur carte Nucléo STM32\+G431\+KB. Permet d\textquotesingle{}activer les différents modules logiciels à votre disposition. 
+
+\begin{DoxyAuthor}{Author}
+jjo 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Mar 29, 2024  
+\end{DoxyDate}
+
+
+\label{config_8h_doc-define-members}
+\Hypertarget{config_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{config_8h_afa3215f0aa766367f5d34bee80929152}\index{config.h@{config.h}!I2C\_TIMEOUT@{I2C\_TIMEOUT}}
+\index{I2C\_TIMEOUT@{I2C\_TIMEOUT}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_TIMEOUT}{I2C\_TIMEOUT}}
+{\footnotesize\ttfamily \label{config_8h_afa3215f0aa766367f5d34bee80929152} 
+\+\#define I2\+C\+\_\+\+TIMEOUT~5}
+
+\Hypertarget{config_8h_a35bd7f0ad1339fa50073bc23bd963566}\index{config.h@{config.h}!LED\_GREEN\_GPIO@{LED\_GREEN\_GPIO}}
+\index{LED\_GREEN\_GPIO@{LED\_GREEN\_GPIO}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{LED\_GREEN\_GPIO}{LED\_GREEN\_GPIO}}
+{\footnotesize\ttfamily \label{config_8h_a35bd7f0ad1339fa50073bc23bd963566} 
+\+\#define LED\+\_\+\+GREEN\+\_\+\+GPIO~GPIOB}
+
+\Hypertarget{config_8h_a0539be032702009fb24beec89c6fa0c0}\index{config.h@{config.h}!LED\_GREEN\_PIN@{LED\_GREEN\_PIN}}
+\index{LED\_GREEN\_PIN@{LED\_GREEN\_PIN}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{LED\_GREEN\_PIN}{LED\_GREEN\_PIN}}
+{\footnotesize\ttfamily \label{config_8h_a0539be032702009fb24beec89c6fa0c0} 
+\+\#define LED\+\_\+\+GREEN\+\_\+\+PIN~GPIO\+\_\+\+PIN\+\_\+8}
+
+\Hypertarget{config_8h_a0c83a77ed4956800d2be900f5fcc2207}\index{config.h@{config.h}!UART1\_ON\_PA10\_PA9@{UART1\_ON\_PA10\_PA9}}
+\index{UART1\_ON\_PA10\_PA9@{UART1\_ON\_PA10\_PA9}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{UART1\_ON\_PA10\_PA9}{UART1\_ON\_PA10\_PA9}}
+{\footnotesize\ttfamily \label{config_8h_a0c83a77ed4956800d2be900f5fcc2207} 
+\+\#define UART1\+\_\+\+ON\+\_\+\+PA10\+\_\+\+PA9}
+
+\Hypertarget{config_8h_ac6407fe6d080f184fa323e3734d80b15}\index{config.h@{config.h}!UART2\_ON\_PA3\_PA2@{UART2\_ON\_PA3\_PA2}}
+\index{UART2\_ON\_PA3\_PA2@{UART2\_ON\_PA3\_PA2}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{UART2\_ON\_PA3\_PA2}{UART2\_ON\_PA3\_PA2}}
+{\footnotesize\ttfamily \label{config_8h_ac6407fe6d080f184fa323e3734d80b15} 
+\+\#define UART2\+\_\+\+ON\+\_\+\+PA3\+\_\+\+PA2}
+
+\Hypertarget{config_8h_aaa136cd92f8e65d59edb1b0b4b99f7df}\index{config.h@{config.h}!USE\_ADC@{USE\_ADC}}
+\index{USE\_ADC@{USE\_ADC}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_ADC}{USE\_ADC}}
+{\footnotesize\ttfamily \label{config_8h_aaa136cd92f8e65d59edb1b0b4b99f7df} 
+\+\#define USE\+\_\+\+ADC~1}
+
+\Hypertarget{config_8h_a3cf214e322c86548ae33500ff6dbfb6e}\index{config.h@{config.h}!USE\_APDS9960@{USE\_APDS9960}}
+\index{USE\_APDS9960@{USE\_APDS9960}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_APDS9960}{USE\_APDS9960}}
+{\footnotesize\ttfamily \label{config_8h_a3cf214e322c86548ae33500ff6dbfb6e} 
+\+\#define USE\+\_\+\+APDS9960~0}
+
+\Hypertarget{config_8h_a0dc9bcfdc6e1389acf8634c9d024228f}\index{config.h@{config.h}!USE\_BH1750FVI@{USE\_BH1750FVI}}
+\index{USE\_BH1750FVI@{USE\_BH1750FVI}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_BH1750FVI}{USE\_BH1750FVI}}
+{\footnotesize\ttfamily \label{config_8h_a0dc9bcfdc6e1389acf8634c9d024228f} 
+\+\#define USE\+\_\+\+BH1750\+FVI~0}
+
+\Hypertarget{config_8h_aa08c44e91364eff8bc5b05624c8937e2}\index{config.h@{config.h}!USE\_BMP180@{USE\_BMP180}}
+\index{USE\_BMP180@{USE\_BMP180}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_BMP180}{USE\_BMP180}}
+{\footnotesize\ttfamily \label{config_8h_aa08c44e91364eff8bc5b05624c8937e2} 
+\+\#define USE\+\_\+\+BMP180~0}
+
+\Hypertarget{config_8h_a4330119d503803ecb5fc6ee60f88f491}\index{config.h@{config.h}!USE\_BSP\_EXTIT@{USE\_BSP\_EXTIT}}
+\index{USE\_BSP\_EXTIT@{USE\_BSP\_EXTIT}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_BSP\_EXTIT}{USE\_BSP\_EXTIT}}
+{\footnotesize\ttfamily \label{config_8h_a4330119d503803ecb5fc6ee60f88f491} 
+\+\#define USE\+\_\+\+BSP\+\_\+\+EXTIT~1}
+
+\Hypertarget{config_8h_a837392f13b258c60487cb9b15bbbfd0c}\index{config.h@{config.h}!USE\_BSP\_TIMER@{USE\_BSP\_TIMER}}
+\index{USE\_BSP\_TIMER@{USE\_BSP\_TIMER}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_BSP\_TIMER}{USE\_BSP\_TIMER}}
+{\footnotesize\ttfamily \label{config_8h_a837392f13b258c60487cb9b15bbbfd0c} 
+\+\#define USE\+\_\+\+BSP\+\_\+\+TIMER~1}
+
+\Hypertarget{config_8h_a4731191921a5408ca8a3c06409d2e8c9}\index{config.h@{config.h}!USE\_DAC@{USE\_DAC}}
+\index{USE\_DAC@{USE\_DAC}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_DAC}{USE\_DAC}}
+{\footnotesize\ttfamily \label{config_8h_a4731191921a5408ca8a3c06409d2e8c9} 
+\+\#define USE\+\_\+\+DAC~1}
+
+\Hypertarget{config_8h_ab89947975b1e285dc2f5124b7acb2ff1}\index{config.h@{config.h}!USE\_DHT11@{USE\_DHT11}}
+\index{USE\_DHT11@{USE\_DHT11}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_DHT11}{USE\_DHT11}}
+{\footnotesize\ttfamily \label{config_8h_ab89947975b1e285dc2f5124b7acb2ff1} 
+\+\#define USE\+\_\+\+DHT11~0}
+
+\Hypertarget{config_8h_ad1f725205fb41df71f263324446af858}\index{config.h@{config.h}!USE\_DS18B20@{USE\_DS18B20}}
+\index{USE\_DS18B20@{USE\_DS18B20}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_DS18B20}{USE\_DS18B20}}
+{\footnotesize\ttfamily \label{config_8h_ad1f725205fb41df71f263324446af858} 
+\+\#define USE\+\_\+\+DS18\+B20~0}
+
+\Hypertarget{config_8h_a5d43be38108cf5b44434cd9a9db7748e}\index{config.h@{config.h}!USE\_EPAPER@{USE\_EPAPER}}
+\index{USE\_EPAPER@{USE\_EPAPER}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_EPAPER}{USE\_EPAPER}}
+{\footnotesize\ttfamily \label{config_8h_a5d43be38108cf5b44434cd9a9db7748e} 
+\+\#define USE\+\_\+\+EPAPER~0}
+
+\Hypertarget{config_8h_a1b0d6e01ca3a1a1421c72e1b132aeaa3}\index{config.h@{config.h}!USE\_FONT11x18@{USE\_FONT11x18}}
+\index{USE\_FONT11x18@{USE\_FONT11x18}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_FONT11x18}{USE\_FONT11x18}}
+{\footnotesize\ttfamily \label{config_8h_a1b0d6e01ca3a1a1421c72e1b132aeaa3} 
+\+\#define USE\+\_\+\+FONT11x18~0}
+
+\Hypertarget{config_8h_ab48fd4365b00a178471773bc5e54fade}\index{config.h@{config.h}!USE\_FONT16x26@{USE\_FONT16x26}}
+\index{USE\_FONT16x26@{USE\_FONT16x26}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_FONT16x26}{USE\_FONT16x26}}
+{\footnotesize\ttfamily \label{config_8h_ab48fd4365b00a178471773bc5e54fade} 
+\+\#define USE\+\_\+\+FONT16x26~0}
+
+\Hypertarget{config_8h_a8c8508975dbd69b42f0a32a9c4cbf9bd}\index{config.h@{config.h}!USE\_FONT7x10@{USE\_FONT7x10}}
+\index{USE\_FONT7x10@{USE\_FONT7x10}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_FONT7x10}{USE\_FONT7x10}}
+{\footnotesize\ttfamily \label{config_8h_a8c8508975dbd69b42f0a32a9c4cbf9bd} 
+\+\#define USE\+\_\+\+FONT7x10~1}
+
+\Hypertarget{config_8h_a977812fb7d827ec35754b042d301137d}\index{config.h@{config.h}!USE\_GPS@{USE\_GPS}}
+\index{USE\_GPS@{USE\_GPS}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_GPS}{USE\_GPS}}
+{\footnotesize\ttfamily \label{config_8h_a977812fb7d827ec35754b042d301137d} 
+\+\#define USE\+\_\+\+GPS~0}
+
+\Hypertarget{config_8h_a5306f27f2b580e8450b67153a866de92}\index{config.h@{config.h}!USE\_HCSR04@{USE\_HCSR04}}
+\index{USE\_HCSR04@{USE\_HCSR04}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_HCSR04}{USE\_HCSR04}}
+{\footnotesize\ttfamily \label{config_8h_a5306f27f2b580e8450b67153a866de92} 
+\+\#define USE\+\_\+\+HCSR04~0}
+
+\Hypertarget{config_8h_ad49930ef15af40fee393f8bd82881664}\index{config.h@{config.h}!USE\_I2C@{USE\_I2C}}
+\index{USE\_I2C@{USE\_I2C}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_I2C}{USE\_I2C}}
+{\footnotesize\ttfamily \label{config_8h_ad49930ef15af40fee393f8bd82881664} 
+\+\#define USE\+\_\+\+I2C~0}
+
+\Hypertarget{config_8h_a15b71b6ebf1fb67ee009445dc781f412}\index{config.h@{config.h}!USE\_ILI9341@{USE\_ILI9341}}
+\index{USE\_ILI9341@{USE\_ILI9341}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_ILI9341}{USE\_ILI9341}}
+{\footnotesize\ttfamily \label{config_8h_a15b71b6ebf1fb67ee009445dc781f412} 
+\+\#define USE\+\_\+\+ILI9341~1}
+
+\Hypertarget{config_8h_acd1a09aeb92cb81a918863bf440a607b}\index{config.h@{config.h}!USE\_IN1@{USE\_IN1}}
+\index{USE\_IN1@{USE\_IN1}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_IN1}{USE\_IN1}}
+{\footnotesize\ttfamily \label{config_8h_acd1a09aeb92cb81a918863bf440a607b} 
+\+\#define USE\+\_\+\+IN1~0}
+
+\Hypertarget{config_8h_a999c7ee747d8dafe60637baba03a3f38}\index{config.h@{config.h}!USE\_IN10@{USE\_IN10}}
+\index{USE\_IN10@{USE\_IN10}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_IN10}{USE\_IN10}}
+{\footnotesize\ttfamily \label{config_8h_a999c7ee747d8dafe60637baba03a3f38} 
+\+\#define USE\+\_\+\+IN10~0}
+
+\Hypertarget{config_8h_a9ec50f361bf59a286d6f4920413ee1eb}\index{config.h@{config.h}!USE\_IN13@{USE\_IN13}}
+\index{USE\_IN13@{USE\_IN13}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_IN13}{USE\_IN13}}
+{\footnotesize\ttfamily \label{config_8h_a9ec50f361bf59a286d6f4920413ee1eb} 
+\+\#define USE\+\_\+\+IN13~0}
+
+\Hypertarget{config_8h_a25036d0271f38e2ebfb1a9b3cab953d2}\index{config.h@{config.h}!USE\_IN17@{USE\_IN17}}
+\index{USE\_IN17@{USE\_IN17}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_IN17}{USE\_IN17}}
+{\footnotesize\ttfamily \label{config_8h_a25036d0271f38e2ebfb1a9b3cab953d2} 
+\+\#define USE\+\_\+\+IN17~0}
+
+\Hypertarget{config_8h_ad5484f32606a746f55c5939581b5820f}\index{config.h@{config.h}!USE\_IN2@{USE\_IN2}}
+\index{USE\_IN2@{USE\_IN2}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_IN2}{USE\_IN2}}
+{\footnotesize\ttfamily \label{config_8h_ad5484f32606a746f55c5939581b5820f} 
+\+\#define USE\+\_\+\+IN2~1}
+
+\Hypertarget{config_8h_a4c0c97061e8b6ef7faf508b446aec049}\index{config.h@{config.h}!USE\_IN3@{USE\_IN3}}
+\index{USE\_IN3@{USE\_IN3}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_IN3}{USE\_IN3}}
+{\footnotesize\ttfamily \label{config_8h_a4c0c97061e8b6ef7faf508b446aec049} 
+\+\#define USE\+\_\+\+IN3~0}
+
+\Hypertarget{config_8h_a7ce1056d589584acd86e239c42edbd38}\index{config.h@{config.h}!USE\_IN4@{USE\_IN4}}
+\index{USE\_IN4@{USE\_IN4}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_IN4}{USE\_IN4}}
+{\footnotesize\ttfamily \label{config_8h_a7ce1056d589584acd86e239c42edbd38} 
+\+\#define USE\+\_\+\+IN4~0}
+
+\Hypertarget{config_8h_a8c84256cde1335b0fb37f1c82bdcefb1}\index{config.h@{config.h}!USE\_LD19@{USE\_LD19}}
+\index{USE\_LD19@{USE\_LD19}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_LD19}{USE\_LD19}}
+{\footnotesize\ttfamily \label{config_8h_a8c84256cde1335b0fb37f1c82bdcefb1} 
+\+\#define USE\+\_\+\+LD19~0}
+
+\Hypertarget{config_8h_a33158fd7d381ab76a55cf2795553294a}\index{config.h@{config.h}!USE\_MATRIX\_KEYBOARD@{USE\_MATRIX\_KEYBOARD}}
+\index{USE\_MATRIX\_KEYBOARD@{USE\_MATRIX\_KEYBOARD}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_MATRIX\_KEYBOARD}{USE\_MATRIX\_KEYBOARD}}
+{\footnotesize\ttfamily \label{config_8h_a33158fd7d381ab76a55cf2795553294a} 
+\+\#define USE\+\_\+\+MATRIX\+\_\+\+KEYBOARD~0}
+
+\Hypertarget{config_8h_a9f9346c8ab4d16e068a11ccd03db2858}\index{config.h@{config.h}!USE\_MCP23017@{USE\_MCP23017}}
+\index{USE\_MCP23017@{USE\_MCP23017}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_MCP23017}{USE\_MCP23017}}
+{\footnotesize\ttfamily \label{config_8h_a9f9346c8ab4d16e068a11ccd03db2858} 
+\+\#define USE\+\_\+\+MCP23017~0}
+
+\Hypertarget{config_8h_a23a7e96e89664f2539ebe845a5fc0c07}\index{config.h@{config.h}!USE\_MCP23S17@{USE\_MCP23S17}}
+\index{USE\_MCP23S17@{USE\_MCP23S17}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_MCP23S17}{USE\_MCP23S17}}
+{\footnotesize\ttfamily \label{config_8h_a23a7e96e89664f2539ebe845a5fc0c07} 
+\+\#define USE\+\_\+\+MCP23\+S17~0}
+
+\Hypertarget{config_8h_a245635132118568c39098a87594244a9}\index{config.h@{config.h}!USE\_MOTOR\_DC@{USE\_MOTOR\_DC}}
+\index{USE\_MOTOR\_DC@{USE\_MOTOR\_DC}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_MOTOR\_DC}{USE\_MOTOR\_DC}}
+{\footnotesize\ttfamily \label{config_8h_a245635132118568c39098a87594244a9} 
+\+\#define USE\+\_\+\+MOTOR\+\_\+\+DC~0}
+
+\Hypertarget{config_8h_ae25eee2435f8d718ba539445d17803ad}\index{config.h@{config.h}!USE\_MPU6050@{USE\_MPU6050}}
+\index{USE\_MPU6050@{USE\_MPU6050}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_MPU6050}{USE\_MPU6050}}
+{\footnotesize\ttfamily \label{config_8h_ae25eee2435f8d718ba539445d17803ad} 
+\+\#define USE\+\_\+\+MPU6050~0}
+
+\Hypertarget{config_8h_aef39c5a17e5f46341d9913c7192bd87e}\index{config.h@{config.h}!USE\_NFC03A1@{USE\_NFC03A1}}
+\index{USE\_NFC03A1@{USE\_NFC03A1}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_NFC03A1}{USE\_NFC03A1}}
+{\footnotesize\ttfamily \label{config_8h_aef39c5a17e5f46341d9913c7192bd87e} 
+\+\#define USE\+\_\+\+NFC03\+A1~0}
+
+\Hypertarget{config_8h_afacc6ecc4901a729fac01bbea03deb51}\index{config.h@{config.h}!USE\_RTC@{USE\_RTC}}
+\index{USE\_RTC@{USE\_RTC}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_RTC}{USE\_RTC}}
+{\footnotesize\ttfamily \label{config_8h_afacc6ecc4901a729fac01bbea03deb51} 
+\+\#define USE\+\_\+\+RTC~0}
+
+\Hypertarget{config_8h_a946297d7d599e95275c0615c9ee92853}\index{config.h@{config.h}!USE\_SD\_CARD@{USE\_SD\_CARD}}
+\index{USE\_SD\_CARD@{USE\_SD\_CARD}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_SD\_CARD}{USE\_SD\_CARD}}
+{\footnotesize\ttfamily \label{config_8h_a946297d7d599e95275c0615c9ee92853} 
+\+\#define USE\+\_\+\+SD\+\_\+\+CARD~0}
+
+\Hypertarget{config_8h_a1acd02cc5bc9a5945addaf6e4f65d39a}\index{config.h@{config.h}!USE\_SPI@{USE\_SPI}}
+\index{USE\_SPI@{USE\_SPI}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_SPI}{USE\_SPI}}
+{\footnotesize\ttfamily \label{config_8h_a1acd02cc5bc9a5945addaf6e4f65d39a} 
+\+\#define USE\+\_\+\+SPI~1}
+
+\Hypertarget{config_8h_aa4308ba8ad3d4954fc5c60dc378cb728}\index{config.h@{config.h}!USE\_TESTBOARD@{USE\_TESTBOARD}}
+\index{USE\_TESTBOARD@{USE\_TESTBOARD}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_TESTBOARD}{USE\_TESTBOARD}}
+{\footnotesize\ttfamily \label{config_8h_aa4308ba8ad3d4954fc5c60dc378cb728} 
+\+\#define USE\+\_\+\+TESTBOARD~0}
+
+\Hypertarget{config_8h_aedc588909d706a0c330f1c1c1f857bf4}\index{config.h@{config.h}!USE\_VL53L0@{USE\_VL53L0}}
+\index{USE\_VL53L0@{USE\_VL53L0}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_VL53L0}{USE\_VL53L0}}
+{\footnotesize\ttfamily \label{config_8h_aedc588909d706a0c330f1c1c1f857bf4} 
+\+\#define USE\+\_\+\+VL53\+L0~0}
+
+\Hypertarget{config_8h_a0a06f810121b1b478c8a1360b8028c8b}\index{config.h@{config.h}!USE\_WS2812@{USE\_WS2812}}
+\index{USE\_WS2812@{USE\_WS2812}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_WS2812}{USE\_WS2812}}
+{\footnotesize\ttfamily \label{config_8h_a0a06f810121b1b478c8a1360b8028c8b} 
+\+\#define USE\+\_\+\+WS2812~0}
+
+\Hypertarget{config_8h_aed04f9e1f860acd98ea90ba2fac27d92}\index{config.h@{config.h}!USE\_XPT2046@{USE\_XPT2046}}
+\index{USE\_XPT2046@{USE\_XPT2046}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_XPT2046}{USE\_XPT2046}}
+{\footnotesize\ttfamily \label{config_8h_aed04f9e1f860acd98ea90ba2fac27d92} 
+\+\#define USE\+\_\+\+XPT2046~1}
+
+\Hypertarget{config_8h_a7b402451e0ce97dedba5b386c7e25c8a}\index{config.h@{config.h}!USE\_YX6300@{USE\_YX6300}}
+\index{USE\_YX6300@{USE\_YX6300}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{USE\_YX6300}{USE\_YX6300}}
+{\footnotesize\ttfamily \label{config_8h_a7b402451e0ce97dedba5b386c7e25c8a} 
+\+\#define USE\+\_\+\+YX6300~0}
+

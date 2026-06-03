@@ -1,0 +1,60 @@
+\doxysection{audio\+\_\+player.\+c File Reference}
+\hypertarget{audio__player_8c}{}\label{audio__player_8c}\index{audio\_player.c@{audio\_player.c}}
+
+
+Lecteur audio cadencé par cycles d\textquotesingle{}horloge sur sortie analogique DAC.  
+
+
+{\ttfamily \+\#include "{}audio\+\_\+player.\+h"{}}\newline
+{\ttfamily \+\#include "{}audio\+\_\+storage.\+h"{}}\newline
+{\ttfamily \+\#include "{}audio\+\_\+recorder.\+h"{}}\newline
+{\ttfamily \+\#include "{}stm32g4\+\_\+sys.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{audio__player_8c_a54084890d98ecdebea73df3b5050be4a}{Audio\+Player\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialise le DAC périphérique et configure la base de temps matérielle DWT. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{audio__player_8c_a6c38364bf297e9188de4d8258d4df7b1}{Audio\+Player\+\_\+\+Play\+From\+Flash}} (void)
+\begin{DoxyCompactList}\small\item\em Transfère les données Flash vers la RAM puis les joue en temps réel sur le Jack. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lecteur audio cadencé par cycles d\textquotesingle{}horloge sur sortie analogique DAC. 
+
+\begin{DoxyAuthor}{Author}
+Basile, Titouan, Guillaume 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Avril 2026  
+\end{DoxyDate}
+
+
+\label{audio__player_8c_doc-func-members}
+\Hypertarget{audio__player_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{audio__player_8c_a54084890d98ecdebea73df3b5050be4a}\index{audio\_player.c@{audio\_player.c}!AudioPlayer\_Init@{AudioPlayer\_Init}}
+\index{AudioPlayer\_Init@{AudioPlayer\_Init}!audio\_player.c@{audio\_player.c}}
+\doxysubsubsection{\texorpdfstring{AudioPlayer\_Init()}{AudioPlayer\_Init()}}
+{\footnotesize\ttfamily \label{audio__player_8c_a54084890d98ecdebea73df3b5050be4a} 
+void Audio\+Player\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise le DAC périphérique et configure la base de temps matérielle DWT. 
+
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}
+\Hypertarget{audio__player_8c_a6c38364bf297e9188de4d8258d4df7b1}\index{audio\_player.c@{audio\_player.c}!AudioPlayer\_PlayFromFlash@{AudioPlayer\_PlayFromFlash}}
+\index{AudioPlayer\_PlayFromFlash@{AudioPlayer\_PlayFromFlash}!audio\_player.c@{audio\_player.c}}
+\doxysubsubsection{\texorpdfstring{AudioPlayer\_PlayFromFlash()}{AudioPlayer\_PlayFromFlash()}}
+{\footnotesize\ttfamily \label{audio__player_8c_a6c38364bf297e9188de4d8258d4df7b1} 
+void Audio\+Player\+\_\+\+Play\+From\+Flash (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Transfère les données Flash vers la RAM puis les joue en temps réel sur le Jack. 
+
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}

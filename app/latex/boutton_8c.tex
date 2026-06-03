@@ -1,0 +1,63 @@
+\doxysection{boutton.\+c File Reference}
+\hypertarget{boutton_8c}{}\label{boutton_8c}\index{boutton.c@{boutton.c}}
+
+
+Implémentation des fonctions de lecture des boutons poussoirs.  
+
+
+{\ttfamily \+\#include "{}boutton.\+h"{}}\newline
+{\ttfamily \+\#include "{}stm32g4\+\_\+gpio.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{boutton_8c_aa550fbf7e9db2cbff32e2e878b25e56b}{BUTTON\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialise les broches GPIO des 5 boutons en entrée numérique. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{boutton_8c_a0c5cae4065e0a050e5da204fcffc132a}{BUTTON\+\_\+\+Is\+Pressed}} (\doxymbox{\hyperlink{boutton_8h_aa60e15d86cfe7033f28c7d066c85266e}{Button\+Id}} button)
+\begin{DoxyCompactList}\small\item\em Vérifie l\textquotesingle{}état de pression d\textquotesingle{}un bouton spécifique. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implémentation des fonctions de lecture des boutons poussoirs. 
+
+\begin{DoxyAuthor}{Author}
+Basile, Titouan, Guillaume 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+13 mars 2026  
+\end{DoxyDate}
+
+
+\label{boutton_8c_doc-func-members}
+\Hypertarget{boutton_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{boutton_8c_aa550fbf7e9db2cbff32e2e878b25e56b}\index{boutton.c@{boutton.c}!BUTTON\_Init@{BUTTON\_Init}}
+\index{BUTTON\_Init@{BUTTON\_Init}!boutton.c@{boutton.c}}
+\doxysubsubsection{\texorpdfstring{BUTTON\_Init()}{BUTTON\_Init()}}
+{\footnotesize\ttfamily \label{boutton_8c_aa550fbf7e9db2cbff32e2e878b25e56b} 
+void BUTTON\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise les broches GPIO des 5 boutons en entrée numérique. 
+
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}
+\Hypertarget{boutton_8c_a0c5cae4065e0a050e5da204fcffc132a}\index{boutton.c@{boutton.c}!BUTTON\_IsPressed@{BUTTON\_IsPressed}}
+\index{BUTTON\_IsPressed@{BUTTON\_IsPressed}!boutton.c@{boutton.c}}
+\doxysubsubsection{\texorpdfstring{BUTTON\_IsPressed()}{BUTTON\_IsPressed()}}
+{\footnotesize\ttfamily \label{boutton_8c_a0c5cae4065e0a050e5da204fcffc132a} 
+bool BUTTON\+\_\+\+Is\+Pressed (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{boutton_8h_aa60e15d86cfe7033f28c7d066c85266e}{Button\+Id}}}]{button}{}\end{DoxyParamCaption})}
+
+
+
+Vérifie l\textquotesingle{}état de pression d\textquotesingle{}un bouton spécifique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & Identifiant du bouton à tester (de type \doxylink{boutton_8h_aa60e15d86cfe7033f28c7d066c85266e}{Button\+Id}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si le bouton est pressé, false sinon. 
+\end{DoxyReturn}
