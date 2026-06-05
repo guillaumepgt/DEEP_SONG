@@ -1,0 +1,117 @@
+\doxysection{ui.\+c File Reference}
+\hypertarget{ui_8c}{}\label{ui_8c}\index{ui.c@{ui.c}}
+
+
+Implémentation de l\textquotesingle{}ordonnanceur logique et visuel de l\textquotesingle{}IHM.  
+
+
+{\ttfamily \+\#include "{}ui.\+h"{}}\newline
+{\ttfamily \+\#include "{}display.\+h"{}}\newline
+{\ttfamily \+\#include "{}audio\+\_\+recorder.\+h"{}}\newline
+{\ttfamily \+\#include "{}audio\+\_\+player.\+h"{}}\newline
+{\ttfamily \+\#include "{}stm32g4\+\_\+adc.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{ui_8c_ab4e0e61d72486265ec7c36de732e454a}{UI\+\_\+\+Menu\+Item\+\_\+t}} \{ \doxymbox{\hyperlink{ui_8c_ab4e0e61d72486265ec7c36de732e454aa6ab995130b61c1a9eabaea2e61837a32}{MENU\+\_\+\+RECORD}} = 0
+, \doxymbox{\hyperlink{ui_8c_ab4e0e61d72486265ec7c36de732e454aa5a87fc9ed9499695d207d699fbf1450d}{MENU\+\_\+\+PLAY}}
+, \doxymbox{\hyperlink{ui_8c_ab4e0e61d72486265ec7c36de732e454aaaf26a559bd49c5a4b246fdd0bc0470c3}{MENU\+\_\+\+SHOW\+\_\+\+SIGNAL}}
+, \doxymbox{\hyperlink{ui_8c_ab4e0e61d72486265ec7c36de732e454aafb68e97b0260e3b8a29736d56856d436}{MENU\+\_\+\+COUNT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Liste ordonnée des pages accessibles via l\textquotesingle{}arborescence du menu principal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{ui_8c_a55aaeaa82656ec027048c109b598fc11}{UI\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialise l\textquotesingle{}afficheur, l\textquotesingle{}ADC, et dessine l\textquotesingle{}écran principal d\textquotesingle{}accueil du projet. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{ui_8c_a8040759f39d20f0676021e0a799b13f5}{UI\+\_\+\+Process}} (\doxymbox{\hyperlink{struct_u_i___input__t}{UI\+\_\+\+Input\+\_\+t}} input)
+\begin{DoxyCompactList}\small\item\em Machine à états exécutée périodiquement pour traiter la navigation IHM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implémentation de l\textquotesingle{}ordonnanceur logique et visuel de l\textquotesingle{}IHM. 
+
+\begin{DoxyAuthor}{Author}
+Basile, Titouan, Guillaume 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Juin 2026  
+\end{DoxyDate}
+
+
+\label{ui_8c_doc-enum-members}
+\Hypertarget{ui_8c_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{ui_8c_ab4e0e61d72486265ec7c36de732e454a}\index{ui.c@{ui.c}!UI\_MenuItem\_t@{UI\_MenuItem\_t}}
+\index{UI\_MenuItem\_t@{UI\_MenuItem\_t}!ui.c@{ui.c}}
+\doxysubsubsection{\texorpdfstring{UI\_MenuItem\_t}{UI\_MenuItem\_t}}
+{\footnotesize\ttfamily \label{ui_8c_ab4e0e61d72486265ec7c36de732e454a} 
+enum \doxymbox{\hyperlink{ui_8c_ab4e0e61d72486265ec7c36de732e454a}{UI\+\_\+\+Menu\+Item\+\_\+t}}}
+
+
+
+Liste ordonnée des pages accessibles via l\textquotesingle{}arborescence du menu principal. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_RECORD@{MENU\_RECORD}!ui.c@{ui.c}}
+\index{ui.c@{ui.c}!MENU\_RECORD@{MENU\_RECORD}}
+}\Hypertarget{ui_8c_ab4e0e61d72486265ec7c36de732e454aa6ab995130b61c1a9eabaea2e61837a32}\label{ui_8c_ab4e0e61d72486265ec7c36de732e454aa6ab995130b61c1a9eabaea2e61837a32} 
+MENU\+\_\+\+RECORD&Index de la commande d\textquotesingle{}enregistrement. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_PLAY@{MENU\_PLAY}!ui.c@{ui.c}}
+\index{ui.c@{ui.c}!MENU\_PLAY@{MENU\_PLAY}}
+}\Hypertarget{ui_8c_ab4e0e61d72486265ec7c36de732e454aa5a87fc9ed9499695d207d699fbf1450d}\label{ui_8c_ab4e0e61d72486265ec7c36de732e454aa5a87fc9ed9499695d207d699fbf1450d} 
+MENU\+\_\+\+PLAY&Index de la commande de lecture haut-\/parleur. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_SHOW\_SIGNAL@{MENU\_SHOW\_SIGNAL}!ui.c@{ui.c}}
+\index{ui.c@{ui.c}!MENU\_SHOW\_SIGNAL@{MENU\_SHOW\_SIGNAL}}
+}\Hypertarget{ui_8c_ab4e0e61d72486265ec7c36de732e454aaaf26a559bd49c5a4b246fdd0bc0470c3}\label{ui_8c_ab4e0e61d72486265ec7c36de732e454aaaf26a559bd49c5a4b246fdd0bc0470c3} 
+MENU\+\_\+\+SHOW\+\_\+\+SIGNAL&Index de la commande d\textquotesingle{}affichage de l\textquotesingle{}oscilloscope. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_COUNT@{MENU\_COUNT}!ui.c@{ui.c}}
+\index{ui.c@{ui.c}!MENU\_COUNT@{MENU\_COUNT}}
+}\Hypertarget{ui_8c_ab4e0e61d72486265ec7c36de732e454aafb68e97b0260e3b8a29736d56856d436}\label{ui_8c_ab4e0e61d72486265ec7c36de732e454aafb68e97b0260e3b8a29736d56856d436} 
+MENU\+\_\+\+COUNT&Indicateur de limite supérieure du menu. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{ui_8c_doc-func-members}
+\Hypertarget{ui_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{ui_8c_a55aaeaa82656ec027048c109b598fc11}\index{ui.c@{ui.c}!UI\_Init@{UI\_Init}}
+\index{UI\_Init@{UI\_Init}!ui.c@{ui.c}}
+\doxysubsubsection{\texorpdfstring{UI\_Init()}{UI\_Init()}}
+{\footnotesize\ttfamily \label{ui_8c_a55aaeaa82656ec027048c109b598fc11} 
+void UI\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise l\textquotesingle{}afficheur, l\textquotesingle{}ADC, et dessine l\textquotesingle{}écran principal d\textquotesingle{}accueil du projet. 
+
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}
+\Hypertarget{ui_8c_a8040759f39d20f0676021e0a799b13f5}\index{ui.c@{ui.c}!UI\_Process@{UI\_Process}}
+\index{UI\_Process@{UI\_Process}!ui.c@{ui.c}}
+\doxysubsubsection{\texorpdfstring{UI\_Process()}{UI\_Process()}}
+{\footnotesize\ttfamily \label{ui_8c_a8040759f39d20f0676021e0a799b13f5} 
+void UI\+\_\+\+Process (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_u_i___input__t}{UI\+\_\+\+Input\+\_\+t}}}]{input}{}\end{DoxyParamCaption})}
+
+
+
+Machine à états exécutée périodiquement pour traiter la navigation IHM. 
+
+Filtre les fronts montants des boutons pour valider ou changer de page. 
+\begin{DoxyParams}{Parameters}
+{\em input} & Copie instantanée de la structure \doxylink{struct_u_i___input__t}{UI\+\_\+\+Input\+\_\+t} lue par les GPIO. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}

@@ -1,0 +1,68 @@
+\doxysection{ui.\+h File Reference}
+\hypertarget{ui_8h}{}\label{ui_8h}\index{ui.h@{ui.h}}
+
+
+Déclarations des structures logiques de l\textquotesingle{}IHM (Interface Homme-\/\+Machine).  
+
+
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_u_i___input__t}{UI\+\_\+\+Input\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Conteneur logique de l\textquotesingle{}état d\textquotesingle{}activité des boutons d\textquotesingle{}action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{ui_8h_a55aaeaa82656ec027048c109b598fc11}{UI\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialise l\textquotesingle{}afficheur, l\textquotesingle{}ADC, et dessine l\textquotesingle{}écran principal d\textquotesingle{}accueil du projet. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{ui_8h_a8040759f39d20f0676021e0a799b13f5}{UI\+\_\+\+Process}} (\doxymbox{\hyperlink{struct_u_i___input__t}{UI\+\_\+\+Input\+\_\+t}} input)
+\begin{DoxyCompactList}\small\item\em Machine à états exécutée périodiquement pour traiter la navigation IHM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Déclarations des structures logiques de l\textquotesingle{}IHM (Interface Homme-\/\+Machine). 
+
+\begin{DoxyAuthor}{Author}
+Basile, Titouan, Guillaume 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Juin 2026  
+\end{DoxyDate}
+
+
+\label{ui_8h_doc-func-members}
+\Hypertarget{ui_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{ui_8h_a55aaeaa82656ec027048c109b598fc11}\index{ui.h@{ui.h}!UI\_Init@{UI\_Init}}
+\index{UI\_Init@{UI\_Init}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{UI\_Init()}{UI\_Init()}}
+{\footnotesize\ttfamily \label{ui_8h_a55aaeaa82656ec027048c109b598fc11} 
+void UI\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise l\textquotesingle{}afficheur, l\textquotesingle{}ADC, et dessine l\textquotesingle{}écran principal d\textquotesingle{}accueil du projet. 
+
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}
+\Hypertarget{ui_8h_a8040759f39d20f0676021e0a799b13f5}\index{ui.h@{ui.h}!UI\_Process@{UI\_Process}}
+\index{UI\_Process@{UI\_Process}!ui.h@{ui.h}}
+\doxysubsubsection{\texorpdfstring{UI\_Process()}{UI\_Process()}}
+{\footnotesize\ttfamily \label{ui_8h_a8040759f39d20f0676021e0a799b13f5} 
+void UI\+\_\+\+Process (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_u_i___input__t}{UI\+\_\+\+Input\+\_\+t}}}]{input}{}\end{DoxyParamCaption})}
+
+
+
+Machine à états exécutée périodiquement pour traiter la navigation IHM. 
+
+Filtre les fronts montants des boutons pour valider ou changer de page. 
+\begin{DoxyParams}{Parameters}
+{\em input} & Copie instantanée de la structure \doxylink{struct_u_i___input__t}{UI\+\_\+\+Input\+\_\+t} lue par les GPIO. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}

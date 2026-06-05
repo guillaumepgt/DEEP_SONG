@@ -1,29 +1,35 @@
-/*
- * audio_player.c
- *
- *  Created on: Apr 10, 2026
- *      Author: basil
+/**
+ *******************************************************************************
+ * @file    audio_player.c
+ * @author  Basile, Titouan, Guillaume
+ * @date    Avril 2026
+ * @brief   Lecteur audio cadencé par cycles d'horloge sur sortie analogique DAC.
+ *******************************************************************************
  */
+
 #include "audio_player.h"
 #include "audio_storage.h"
 #include "audio_recorder.h"
 #include "stm32g4_sys.h"
 
-/*
- * Buffer local du player
- * On charge ici tout l'audio lu depuis la flash
+static uint16_t playback_buffer[AUDIO_SAMPLE_COUNT]; ///< Tampon local hébergeant la piste audio décompressée
+
+/**
+ * @brief  Initialise le compteur temporel matériel DWT dédié aux pauses calibrées.
+ * @return Aucun.
  */
-static uint16_t playback_buffer[AUDIO_SAMPLE_COUNT];
-
-
-
-static void AudioPlayer_DWT_Init(void) //merci chat je comprends pas ce que ça fait
+static void AudioPlayer_DWT_Init(void)
 {
     CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
     DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
     DWT->CYCCNT = 0;
 }
 
+/**
+ * @brief  Génère un blocage d'exécution d'une durée précise calculée en cycles processeur.
+ * @param  nb_cycles Nombre de tops d'horloge CPU à attendre.
+ * @return Aucun.
+ */
 static void AudioPlayer_WaitCycles(uint32_t nb_cycles)
 {
     uint32_t start = DWT->CYCCNT;
@@ -32,21 +38,13 @@ static void AudioPlayer_WaitCycles(uint32_t nb_cycles)
     }
 }
 
-
 void AudioPlayer_Init(void)
 {
     BSP_DAC_Init(DAC1_OUT1, DAC_MODE_NORMAL, false);
     BSP_DAC_Start_without_dma(DAC1_OUT1);
-
     AudioPlayer_DWT_Init();
-
-
-    // Niveau moyen au repos
-
     BSP_DAC_Set_value(DAC1_OUT1, 2048);
 }
-
-
 
 void AudioPlayer_PlayFromFlash(bool activer_fuzz)
 {
@@ -99,4 +97,3 @@ void AudioPlayer_PlayFromFlash(bool activer_fuzz)
     // Retour au milieu après lecture (Silence propre pour éviter un "clac" dans le haut-parleur)
     BSP_DAC_Set_value(DAC1_OUT1, 2048);
 }
-

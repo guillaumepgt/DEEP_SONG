@@ -1,0 +1,283 @@
+\doxysection{display.\+c File Reference}
+\hypertarget{display_8c}{}\label{display_8c}\index{display.c@{display.c}}
+
+
+Implémentation des fonctions graphiques et des fenêtres de l\textquotesingle{}IHM.  
+
+
+{\ttfamily \+\#include "{}display.\+h"{}}\newline
+{\ttfamily \+\#include "{}tft\+\_\+ili9341/\+stm32g4\+\_\+ili9341.\+h"{}}\newline
+{\ttfamily \+\#include "{}stm32g4\+\_\+gpio.\+h"{}}\newline
+{\ttfamily \+\#include "{}stm32g4\+\_\+adc.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(r,  g,  b)
+\begin{DoxyCompactList}\small\item\em Macro de conversion des couleurs vers le format écran 16 bits. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{display_8c_aa70b031eb15b92c079d10ac6fd7424d4}{C\+\_\+\+BACKGROUND}}~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(240, 244, 248)
+\item 
+\+\#define \doxymbox{\hyperlink{display_8c_ad562945b1c5993a7985d2d71a2aaf762}{C\+\_\+\+CARD\+\_\+\+BG}}~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(255, 255, 255)
+\item 
+\+\#define \doxymbox{\hyperlink{display_8c_a00c2f3e79d828c1a2aade551134886b6}{C\+\_\+\+CARD\+\_\+\+BORDER}}~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(220, 225, 230)
+\item 
+\+\#define \doxymbox{\hyperlink{display_8c_a68cfca395758c0ea3b283b754200e378}{C\+\_\+\+HEADER}}~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(44, 62, 80)
+\item 
+\+\#define \doxymbox{\hyperlink{display_8c_ac28de431973add8086fa5685accac7e2}{C\+\_\+\+TEXT\+\_\+\+MAIN}}~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(52, 73, 94)
+\item 
+\+\#define \doxymbox{\hyperlink{display_8c_afbc69b54bfc2cb4dd81c6e5c51e842c8}{C\+\_\+\+TEXT\+\_\+\+LIGHT}}~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(149, 165, 166)
+\item 
+\+\#define \doxymbox{\hyperlink{display_8c_a5b4711ce30774868c1446eb7f97689ae}{C\+\_\+\+ACCENT\+\_\+\+TEMP}}~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(231, 76, 60)
+\item 
+\+\#define \doxymbox{\hyperlink{display_8c_ac9dbabeec7fb73e4d9a51e0cb1db0c05}{C\+\_\+\+ACCENT\+\_\+\+HUM}}~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(52, 152, 219)
+\item 
+\+\#define \doxymbox{\hyperlink{display_8c_a978e343663eecc8ae8ec41ee690a4f19}{C\+\_\+\+STATUS\+\_\+\+OK}}~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(46, 204, 113)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{display_8c_a6a8be97ca5089ec8a5498d621639e494}{DISPLAY\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialise le bus, les broches de contrôle GPIO et l\textquotesingle{}orientation du contrôleur ILI9341. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8c_aa2e61605857360486f5a1e9228f69a2a}{DISPLAY\+\_\+\+Draw\+Graph\+Screen}} (void)
+\begin{DoxyCompactList}\small\item\em Génère le fond d\textquotesingle{}écran et la grille pour le mode Oscilloscope graphique. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8c_ae1b9b16d7de0de2245ca560910d4e4c9}{DISPLAY\+\_\+\+Show\+Record\+Prompt}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}invite de commande pour démarrer l\textquotesingle{}enregistrement. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8c_ac82a4a7d289814490d444f91b32fd51e}{DISPLAY\+\_\+\+Show\+Recording}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}écran animé d\textquotesingle{}enregistrement en cours. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8c_a824b07e4bff761be06fe2a1314a3c582}{DISPLAY\+\_\+\+Show\+Saving}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche le message de blocage durant l\textquotesingle{}écriture Flash. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8c_a0a73b4285461b2141cab4091610c852f}{DISPLAY\+\_\+\+Show\+Play\+Prompt}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}erreur si la Flash ne contient aucune donnée. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8c_aa6a4412fbccab40b11d8a4c0e8c5a8aa}{DISPLAY\+\_\+\+Show\+Playing}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}animation de lecture de la piste audio. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8c_a6ffd1eecb3182e649cde88d9dd595c6d}{DISPLAY\+\_\+\+Show\+Finished}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche l\textquotesingle{}écran de fin de lecture audio. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8c_a0facb8814880332a2a80c4f762829832}{DISPLAY\+\_\+\+Show\+Record\+Finished}} (void)
+\begin{DoxyCompactList}\small\item\em Affiche la fin de la capture analogique. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8c_ad35260d626ffdfeef9a18b20bbb63580}{DISPLAY\+\_\+\+Draw\+Recorded\+Signal}} (const uint16\+\_\+t \texorpdfstring{$\ast$}{*}samples, uint32\+\_\+t sample\+\_\+count)
+\begin{DoxyCompactList}\small\item\em Trace la courbe temporelle des données audio enregistrées à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{display_8c_a2be9367cf608bb9c83d616558b918f7c}{DISPLAY\+\_\+\+Draw\+Menu}} (uint8\+\_\+t selected\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Affiche le menu de sélection principal avec surbrillance dynamique. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implémentation des fonctions graphiques et des fenêtres de l\textquotesingle{}IHM. 
+
+\begin{DoxyAuthor}{Author}
+Basile, Titouan, Guillaume 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+11 mars 2026  
+\end{DoxyDate}
+
+
+\label{display_8c_doc-define-members}
+\Hypertarget{display_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{display_8c_ac9dbabeec7fb73e4d9a51e0cb1db0c05}\index{display.c@{display.c}!C\_ACCENT\_HUM@{C\_ACCENT\_HUM}}
+\index{C\_ACCENT\_HUM@{C\_ACCENT\_HUM}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{C\_ACCENT\_HUM}{C\_ACCENT\_HUM}}
+{\footnotesize\ttfamily \label{display_8c_ac9dbabeec7fb73e4d9a51e0cb1db0c05} 
+\+\#define C\+\_\+\+ACCENT\+\_\+\+HUM~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(52, 152, 219)}
+
+\Hypertarget{display_8c_a5b4711ce30774868c1446eb7f97689ae}\index{display.c@{display.c}!C\_ACCENT\_TEMP@{C\_ACCENT\_TEMP}}
+\index{C\_ACCENT\_TEMP@{C\_ACCENT\_TEMP}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{C\_ACCENT\_TEMP}{C\_ACCENT\_TEMP}}
+{\footnotesize\ttfamily \label{display_8c_a5b4711ce30774868c1446eb7f97689ae} 
+\+\#define C\+\_\+\+ACCENT\+\_\+\+TEMP~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(231, 76, 60)}
+
+\Hypertarget{display_8c_aa70b031eb15b92c079d10ac6fd7424d4}\index{display.c@{display.c}!C\_BACKGROUND@{C\_BACKGROUND}}
+\index{C\_BACKGROUND@{C\_BACKGROUND}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{C\_BACKGROUND}{C\_BACKGROUND}}
+{\footnotesize\ttfamily \label{display_8c_aa70b031eb15b92c079d10ac6fd7424d4} 
+\+\#define C\+\_\+\+BACKGROUND~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(240, 244, 248)}
+
+\Hypertarget{display_8c_ad562945b1c5993a7985d2d71a2aaf762}\index{display.c@{display.c}!C\_CARD\_BG@{C\_CARD\_BG}}
+\index{C\_CARD\_BG@{C\_CARD\_BG}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{C\_CARD\_BG}{C\_CARD\_BG}}
+{\footnotesize\ttfamily \label{display_8c_ad562945b1c5993a7985d2d71a2aaf762} 
+\+\#define C\+\_\+\+CARD\+\_\+\+BG~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(255, 255, 255)}
+
+\Hypertarget{display_8c_a00c2f3e79d828c1a2aade551134886b6}\index{display.c@{display.c}!C\_CARD\_BORDER@{C\_CARD\_BORDER}}
+\index{C\_CARD\_BORDER@{C\_CARD\_BORDER}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{C\_CARD\_BORDER}{C\_CARD\_BORDER}}
+{\footnotesize\ttfamily \label{display_8c_a00c2f3e79d828c1a2aade551134886b6} 
+\+\#define C\+\_\+\+CARD\+\_\+\+BORDER~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(220, 225, 230)}
+
+\Hypertarget{display_8c_a68cfca395758c0ea3b283b754200e378}\index{display.c@{display.c}!C\_HEADER@{C\_HEADER}}
+\index{C\_HEADER@{C\_HEADER}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{C\_HEADER}{C\_HEADER}}
+{\footnotesize\ttfamily \label{display_8c_a68cfca395758c0ea3b283b754200e378} 
+\+\#define C\+\_\+\+HEADER~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(44, 62, 80)}
+
+\Hypertarget{display_8c_a978e343663eecc8ae8ec41ee690a4f19}\index{display.c@{display.c}!C\_STATUS\_OK@{C\_STATUS\_OK}}
+\index{C\_STATUS\_OK@{C\_STATUS\_OK}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{C\_STATUS\_OK}{C\_STATUS\_OK}}
+{\footnotesize\ttfamily \label{display_8c_a978e343663eecc8ae8ec41ee690a4f19} 
+\+\#define C\+\_\+\+STATUS\+\_\+\+OK~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(46, 204, 113)}
+
+\Hypertarget{display_8c_afbc69b54bfc2cb4dd81c6e5c51e842c8}\index{display.c@{display.c}!C\_TEXT\_LIGHT@{C\_TEXT\_LIGHT}}
+\index{C\_TEXT\_LIGHT@{C\_TEXT\_LIGHT}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{C\_TEXT\_LIGHT}{C\_TEXT\_LIGHT}}
+{\footnotesize\ttfamily \label{display_8c_afbc69b54bfc2cb4dd81c6e5c51e842c8} 
+\+\#define C\+\_\+\+TEXT\+\_\+\+LIGHT~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(149, 165, 166)}
+
+\Hypertarget{display_8c_ac28de431973add8086fa5685accac7e2}\index{display.c@{display.c}!C\_TEXT\_MAIN@{C\_TEXT\_MAIN}}
+\index{C\_TEXT\_MAIN@{C\_TEXT\_MAIN}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{C\_TEXT\_MAIN}{C\_TEXT\_MAIN}}
+{\footnotesize\ttfamily \label{display_8c_ac28de431973add8086fa5685accac7e2} 
+\+\#define C\+\_\+\+TEXT\+\_\+\+MAIN~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(52, 73, 94)}
+
+\Hypertarget{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}\index{display.c@{display.c}!RGB565@{RGB565}}
+\index{RGB565@{RGB565}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{RGB565}{RGB565}}
+{\footnotesize\ttfamily \label{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13} 
+\+\#define RGB565(\begin{DoxyParamCaption}\item[{}]{r}{, }\item[{}]{g}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(((r\ \&\ 0xF8)\ <<\ 8)\ |\ ((g\ \&\ 0xFC)\ <<\ 3)\ |\ (b\ >>\ 3))}
+
+\end{DoxyCode}
+
+
+Macro de conversion des couleurs vers le format écran 16 bits. 
+
+
+
+\label{display_8c_doc-func-members}
+\Hypertarget{display_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{display_8c_aa2e61605857360486f5a1e9228f69a2a}\index{display.c@{display.c}!DISPLAY\_DrawGraphScreen@{DISPLAY\_DrawGraphScreen}}
+\index{DISPLAY\_DrawGraphScreen@{DISPLAY\_DrawGraphScreen}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_DrawGraphScreen()}{DISPLAY\_DrawGraphScreen()}}
+{\footnotesize\ttfamily \label{display_8c_aa2e61605857360486f5a1e9228f69a2a} 
+void DISPLAY\+\_\+\+Draw\+Graph\+Screen (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Génère le fond d\textquotesingle{}écran et la grille pour le mode Oscilloscope graphique. 
+
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}
+\Hypertarget{display_8c_a2be9367cf608bb9c83d616558b918f7c}\index{display.c@{display.c}!DISPLAY\_DrawMenu@{DISPLAY\_DrawMenu}}
+\index{DISPLAY\_DrawMenu@{DISPLAY\_DrawMenu}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_DrawMenu()}{DISPLAY\_DrawMenu()}}
+{\footnotesize\ttfamily \label{display_8c_a2be9367cf608bb9c83d616558b918f7c} 
+void DISPLAY\+\_\+\+Draw\+Menu (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{selected\+\_\+index}{}\end{DoxyParamCaption})}
+
+
+
+Affiche le menu de sélection principal avec surbrillance dynamique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em selected\+\_\+index} & Index de la ligne actuellement pointée (0 à 2). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}
+\Hypertarget{display_8c_ad35260d626ffdfeef9a18b20bbb63580}\index{display.c@{display.c}!DISPLAY\_DrawRecordedSignal@{DISPLAY\_DrawRecordedSignal}}
+\index{DISPLAY\_DrawRecordedSignal@{DISPLAY\_DrawRecordedSignal}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_DrawRecordedSignal()}{DISPLAY\_DrawRecordedSignal()}}
+{\footnotesize\ttfamily \label{display_8c_ad35260d626ffdfeef9a18b20bbb63580} 
+void DISPLAY\+\_\+\+Draw\+Recorded\+Signal (\begin{DoxyParamCaption}\item[{const uint16\+\_\+t \texorpdfstring{$\ast$}{*}}]{samples}{, }\item[{uint32\+\_\+t}]{sample\+\_\+count}{}\end{DoxyParamCaption})}
+
+
+
+Trace la courbe temporelle des données audio enregistrées à l\textquotesingle{}écran. 
+
+Projette graphiquement le repère \+[Indice, Tension]\+ sur la géométrie de l\textquotesingle{}afficheur. 
+\begin{DoxyParams}{Parameters}
+{\em samples} & Tableau contenant les amplitudes 12 bits à dessiner. \\
+\hline
+{\em sample\+\_\+count} & Quantité de points composants le vecteur. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}
+\Hypertarget{display_8c_a6a8be97ca5089ec8a5498d621639e494}\index{display.c@{display.c}!DISPLAY\_Init@{DISPLAY\_Init}}
+\index{DISPLAY\_Init@{DISPLAY\_Init}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_Init()}{DISPLAY\_Init()}}
+{\footnotesize\ttfamily \label{display_8c_a6a8be97ca5089ec8a5498d621639e494} 
+void DISPLAY\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise le bus, les broches de contrôle GPIO et l\textquotesingle{}orientation du contrôleur ILI9341. 
+
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}
+\Hypertarget{display_8c_a6ffd1eecb3182e649cde88d9dd595c6d}\index{display.c@{display.c}!DISPLAY\_ShowFinished@{DISPLAY\_ShowFinished}}
+\index{DISPLAY\_ShowFinished@{DISPLAY\_ShowFinished}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_ShowFinished()}{DISPLAY\_ShowFinished()}}
+{\footnotesize\ttfamily \label{display_8c_a6ffd1eecb3182e649cde88d9dd595c6d} 
+void DISPLAY\+\_\+\+Show\+Finished (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}écran de fin de lecture audio. 
+
+\Hypertarget{display_8c_aa6a4412fbccab40b11d8a4c0e8c5a8aa}\index{display.c@{display.c}!DISPLAY\_ShowPlaying@{DISPLAY\_ShowPlaying}}
+\index{DISPLAY\_ShowPlaying@{DISPLAY\_ShowPlaying}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_ShowPlaying()}{DISPLAY\_ShowPlaying()}}
+{\footnotesize\ttfamily \label{display_8c_aa6a4412fbccab40b11d8a4c0e8c5a8aa} 
+void DISPLAY\+\_\+\+Show\+Playing (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}animation de lecture de la piste audio. 
+
+\Hypertarget{display_8c_a0a73b4285461b2141cab4091610c852f}\index{display.c@{display.c}!DISPLAY\_ShowPlayPrompt@{DISPLAY\_ShowPlayPrompt}}
+\index{DISPLAY\_ShowPlayPrompt@{DISPLAY\_ShowPlayPrompt}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_ShowPlayPrompt()}{DISPLAY\_ShowPlayPrompt()}}
+{\footnotesize\ttfamily \label{display_8c_a0a73b4285461b2141cab4091610c852f} 
+void DISPLAY\+\_\+\+Show\+Play\+Prompt (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}erreur si la Flash ne contient aucune donnée. 
+
+\Hypertarget{display_8c_a0facb8814880332a2a80c4f762829832}\index{display.c@{display.c}!DISPLAY\_ShowRecordFinished@{DISPLAY\_ShowRecordFinished}}
+\index{DISPLAY\_ShowRecordFinished@{DISPLAY\_ShowRecordFinished}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_ShowRecordFinished()}{DISPLAY\_ShowRecordFinished()}}
+{\footnotesize\ttfamily \label{display_8c_a0facb8814880332a2a80c4f762829832} 
+void DISPLAY\+\_\+\+Show\+Record\+Finished (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche la fin de la capture analogique. 
+
+\Hypertarget{display_8c_ac82a4a7d289814490d444f91b32fd51e}\index{display.c@{display.c}!DISPLAY\_ShowRecording@{DISPLAY\_ShowRecording}}
+\index{DISPLAY\_ShowRecording@{DISPLAY\_ShowRecording}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_ShowRecording()}{DISPLAY\_ShowRecording()}}
+{\footnotesize\ttfamily \label{display_8c_ac82a4a7d289814490d444f91b32fd51e} 
+void DISPLAY\+\_\+\+Show\+Recording (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}écran animé d\textquotesingle{}enregistrement en cours. 
+
+\Hypertarget{display_8c_ae1b9b16d7de0de2245ca560910d4e4c9}\index{display.c@{display.c}!DISPLAY\_ShowRecordPrompt@{DISPLAY\_ShowRecordPrompt}}
+\index{DISPLAY\_ShowRecordPrompt@{DISPLAY\_ShowRecordPrompt}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_ShowRecordPrompt()}{DISPLAY\_ShowRecordPrompt()}}
+{\footnotesize\ttfamily \label{display_8c_ae1b9b16d7de0de2245ca560910d4e4c9} 
+void DISPLAY\+\_\+\+Show\+Record\+Prompt (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche l\textquotesingle{}invite de commande pour démarrer l\textquotesingle{}enregistrement. 
+
+\Hypertarget{display_8c_a824b07e4bff761be06fe2a1314a3c582}\index{display.c@{display.c}!DISPLAY\_ShowSaving@{DISPLAY\_ShowSaving}}
+\index{DISPLAY\_ShowSaving@{DISPLAY\_ShowSaving}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_ShowSaving()}{DISPLAY\_ShowSaving()}}
+{\footnotesize\ttfamily \label{display_8c_a824b07e4bff761be06fe2a1314a3c582} 
+void DISPLAY\+\_\+\+Show\+Saving (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Affiche le message de blocage durant l\textquotesingle{}écriture Flash. 
+

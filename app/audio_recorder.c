@@ -1,17 +1,37 @@
+/**
+ *******************************************************************************
+ * @file    audio_recorder.c
+ * @author  Basile, Titouan, Guillaume
+ * @date    Avril 2026
+ * @brief   Implémentation de l'enregistreur audio et de sa sauvegarde en Flash.
+ *******************************************************************************
+ */
+
 #include "audio_recorder.h"
 #include "stm32g4_sys.h"
 #include <string.h>
 
-static uint16_t audio_buffer[AUDIO_SAMPLE_COUNT];
-static bool audio_finished = false;
+static uint16_t audio_buffer[AUDIO_SAMPLE_COUNT]; ///< Mémoire tampon RAM pour la capture brute
+static bool audio_finished = false;               ///< Indicateur d'état de l'enregistrement
 
+/**
+ * @brief  Initialise l'unité de comptage de cycles DWT du cœur ARM Cortex-M4.
+ * @details Le DWT (Data Watchpoint and Trace) fournit un compteur de cycles ultra-précis (CYCCNT) 
+ * qui permet d'effectuer des micro-délais à la fréquence d'horloge du système sans utiliser de Timer.
+ * @return Aucun.
+ */
 static void AudioRecorder_DWT_Init(void)
 {
-    CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
-    DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;
-    DWT->CYCCNT = 0;
+    CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk; ///< Active le bloc de traçage système
+    DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;           ///< Active le compteur de cycles CPU
+    DWT->CYCCNT = 0;                                ///< Remet le compteur à zéro
 }
 
+/**
+ * @brief  Bloque l'exécution du programme pendant un nombre précis de cycles d'horloge CPU.
+ * @param  nb_cycles Nombre de cycles à attendre.
+ * @return Aucun.
+ */
 static void AudioRecorder_WaitCycles(uint32_t nb_cycles)
 {
     uint32_t start = DWT->CYCCNT;
@@ -20,6 +40,11 @@ static void AudioRecorder_WaitCycles(uint32_t nb_cycles)
     }
 }
 
+/**
+ * @brief  Convertit un échantillon 12-bits en valeur 8-bits par décalage.
+ * @param  sample L'échantillon 12 bits de l'ADC (0-4095).
+ * @return La valeur tronquée sur 8 bits (0-255).
+ */
 static uint8_t AudioRecorder_Convert12bTo8b(uint16_t sample)
 {
     return (uint8_t)(sample >> 4);
@@ -69,7 +94,7 @@ AudioStatus_t AudioRecorder_SaveToFlash(void)
         b6 = AudioRecorder_Convert12bTo8b(audio_buffer[i + 6]);
         b7 = AudioRecorder_Convert12bTo8b(audio_buffer[i + 7]);
 
-        packed_data =  //on doit écrire par bout de 64bits
+        packed_data =  
               ((uint64_t)b0)
             | ((uint64_t)b1 << 8)
             | ((uint64_t)b2 << 16)
@@ -78,9 +103,6 @@ AudioStatus_t AudioRecorder_SaveToFlash(void)
             | ((uint64_t)b5 << 40)
             | ((uint64_t)b6 << 48)
             | ((uint64_t)b7 << 56);
-
-//        printf("Idx %lu : %u %u %u %u %u %u %u %u\r\n",
-//               flash_index, b0,b1,b2,b3,b4,b5,b6,b7);
 
         BSP_FLASH_write_doubleword_fast(flash_index, packed_data);
         flash_index++;
@@ -100,7 +122,6 @@ uint16_t AudioRecorder_GetSample(uint32_t index)
     {
         return 0;
     }
-
     return audio_buffer[index];
 }
 

@@ -1,18 +1,14 @@
-/*
- * audio_storage.c
- *
- *  Created on: Apr 10, 2026
- *      Author: basil
+/**
+ *******************************************************************************
+ * @file    audio_storage.c
+ * @author  Basile, Titouan, Guillaume
+ * @date    Avril 2026
+ * @brief   Lecture et décompression des données audio depuis la mémoire Flash.
+ *******************************************************************************
  */
+
 #include "audio_storage.h"
 
-/*
- * Lit l'audio stocké en flash et reconstruit les samples 12 bits
- * dans un buffer RAM.
- *
- * buffer      : buffer de destination
- * max_samples : taille max du buffer
- */
 void AudioStorage_ReadFromFlash(uint16_t *buffer, uint32_t max_samples)
 {
     uint32_t flash_index = 0;
@@ -31,15 +27,11 @@ void AudioStorage_ReadFromFlash(uint16_t *buffer, uint32_t max_samples)
 
         for (uint8_t j = 0; j < 8; j++)
         {
-            if ((sample_index >= AUDIO_SAMPLE_COUNT) || (sample_index >= max_samples)) break;//on revérifie si jamais ça dépasse pendant la boucle et que ça a pas reverifié dans le while
-
+            if ((sample_index >= AUDIO_SAMPLE_COUNT) || (sample_index >= max_samples)) break;
 
             sample8b = (uint8_t)((packed_data >> (8 * j)) & 0xFF);
 
-
-            //Reconvertit 8 bits -> 12 bits
-
-            buffer[sample_index] = ((uint16_t)sample8b) << 4; //Dac et adc utilise du 12bits, donc on convertit en 12 bits pour simplifier l'utilisation
+            buffer[sample_index] = ((uint16_t)sample8b) << 4;
             sample_index++;
         }
 
@@ -47,11 +39,7 @@ void AudioStorage_ReadFromFlash(uint16_t *buffer, uint32_t max_samples)
     }
 }
 
-
-//Renvoie le nombre total de samples stockés
-
 uint32_t AudioStorage_GetStoredSampleCount(void)
 {
     return AUDIO_SAMPLE_COUNT;
 }
-

@@ -1,0 +1,226 @@
+\doxysection{audio\+\_\+recorder.\+h File Reference}
+\hypertarget{audio__recorder_8h}{}\label{audio__recorder_8h}\index{audio\_recorder.h@{audio\_recorder.h}}
+
+
+Module d\textquotesingle{}enregistrement audio via le convertisseur analogique-\/numérique (ADC).  
+
+
+{\ttfamily \+\#include "{}config.\+h"{}}\newline
+{\ttfamily \+\#include "{}stm32g4\+\_\+adc.\+h"{}}\newline
+{\ttfamily \+\#include "{}stm32g4\+\_\+flash.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{audio__recorder_8h_ad3551782d92bcdd5037f27893b581901}{AUDIO\+\_\+\+SAMPLE\+\_\+\+RATE\+\_\+\+HZ}}~1000U
+\begin{DoxyCompactList}\small\item\em Fréquence d\textquotesingle{}échantillonnage de la capture (1 k\+Hz). \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{audio__recorder_8h_aa7c8dfe8d198e011cb3760e4a3d8924f}{AUDIO\+\_\+\+DURATION\+\_\+\+MS}}~1920U
+\begin{DoxyCompactList}\small\item\em Durée maximale d\textquotesingle{}un enregistrement en millisecondes. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{audio__recorder_8h_a91b075f03ef8d56e34670a2ff2cbc559}{AUDIO\+\_\+\+SAMPLE\+\_\+\+COUNT}}~((\doxymbox{\hyperlink{audio__recorder_8h_ad3551782d92bcdd5037f27893b581901}{AUDIO\+\_\+\+SAMPLE\+\_\+\+RATE\+\_\+\+HZ}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{audio__recorder_8h_aa7c8dfe8d198e011cb3760e4a3d8924f}{AUDIO\+\_\+\+DURATION\+\_\+\+MS}}) /\+ 1000U)
+\begin{DoxyCompactList}\small\item\em Nombre total d\textquotesingle{}échantillons (1920 samples). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818}{Audio\+Status\+\_\+t}} \{ \doxymbox{\hyperlink{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818a09688b7a88e0ba2d712a3d9a73604b15}{AUDIO\+\_\+\+OK}} = 0
+, \doxymbox{\hyperlink{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818a153dd3e294e6d11c90270dc0279d6370}{AUDIO\+\_\+\+ERROR}}
+ \}
+\begin{DoxyCompactList}\small\item\em Codes de retour pour les opérations audio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{audio__recorder_8h_ae04dc5bcc283fa870ea7ec239dc61ce1}{Audio\+Recorder\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialise le module d\textquotesingle{}enregistrement audio (effacement des buffers). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818}{Audio\+Status\+\_\+t}} \doxymbox{\hyperlink{audio__recorder_8h_a01314204b616b63f987c4ddff913fa3d}{Audio\+Recorder\+\_\+\+Record}} (adc\+\_\+id\+\_\+e channel)
+\begin{DoxyCompactList}\small\item\em Démarre une capture audio bloquante sur le canal ADC spécifié. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818}{Audio\+Status\+\_\+t}} \doxymbox{\hyperlink{audio__recorder_8h_abacbd52d7fe5311ea9c2dd1a1543ee1f}{Audio\+Recorder\+\_\+\+Save\+To\+Flash}} (void)
+\begin{DoxyCompactList}\small\item\em Compresse le buffer audio 12-\/bits en 8-\/bits et l\textquotesingle{}écrit dans la mémoire Flash. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{audio__recorder_8h_aaf4aeb89d8a49dc1e40b53d34718a635}{Audio\+Recorder\+\_\+\+Is\+Finished}} (void)
+\begin{DoxyCompactList}\small\item\em Vérifie si la capture en cours est terminée. \end{DoxyCompactList}\item 
+uint16\+\_\+t \doxymbox{\hyperlink{audio__recorder_8h_ad2440432f2b76a1f853918b8dfc4161a}{Audio\+Recorder\+\_\+\+Get\+Sample}} (uint32\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Récupère un échantillon précis du buffer RAM. \end{DoxyCompactList}\item 
+uint32\+\_\+t \doxymbox{\hyperlink{audio__recorder_8h_af4d14dfc482c7c33bb525feefcd1f478}{Audio\+Recorder\+\_\+\+Get\+Sample\+Count}} (void)
+\begin{DoxyCompactList}\small\item\em Renvoie le nombre d\textquotesingle{}échantillons total d\textquotesingle{}une session audio. \end{DoxyCompactList}\item 
+const uint16\+\_\+t \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{audio__recorder_8h_ab7221c5787757aa7047d11984e595825}{Audio\+Recorder\+\_\+\+Get\+Buffer}} (void)
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}obtenir un pointeur direct vers le buffer de stockage RAM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Module d\textquotesingle{}enregistrement audio via le convertisseur analogique-\/numérique (ADC). 
+
+\begin{DoxyAuthor}{Author}
+Basile, Titouan, Guillaume 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Avril 2026  
+\end{DoxyDate}
+
+
+\label{audio__recorder_8h_doc-define-members}
+\Hypertarget{audio__recorder_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{audio__recorder_8h_aa7c8dfe8d198e011cb3760e4a3d8924f}\index{audio\_recorder.h@{audio\_recorder.h}!AUDIO\_DURATION\_MS@{AUDIO\_DURATION\_MS}}
+\index{AUDIO\_DURATION\_MS@{AUDIO\_DURATION\_MS}!audio\_recorder.h@{audio\_recorder.h}}
+\doxysubsubsection{\texorpdfstring{AUDIO\_DURATION\_MS}{AUDIO\_DURATION\_MS}}
+{\footnotesize\ttfamily \label{audio__recorder_8h_aa7c8dfe8d198e011cb3760e4a3d8924f} 
+\+\#define AUDIO\+\_\+\+DURATION\+\_\+\+MS~1920U}
+
+
+
+Durée maximale d\textquotesingle{}un enregistrement en millisecondes. 
+
+\Hypertarget{audio__recorder_8h_a91b075f03ef8d56e34670a2ff2cbc559}\index{audio\_recorder.h@{audio\_recorder.h}!AUDIO\_SAMPLE\_COUNT@{AUDIO\_SAMPLE\_COUNT}}
+\index{AUDIO\_SAMPLE\_COUNT@{AUDIO\_SAMPLE\_COUNT}!audio\_recorder.h@{audio\_recorder.h}}
+\doxysubsubsection{\texorpdfstring{AUDIO\_SAMPLE\_COUNT}{AUDIO\_SAMPLE\_COUNT}}
+{\footnotesize\ttfamily \label{audio__recorder_8h_a91b075f03ef8d56e34670a2ff2cbc559} 
+\+\#define AUDIO\+\_\+\+SAMPLE\+\_\+\+COUNT~((\doxymbox{\hyperlink{audio__recorder_8h_ad3551782d92bcdd5037f27893b581901}{AUDIO\+\_\+\+SAMPLE\+\_\+\+RATE\+\_\+\+HZ}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{audio__recorder_8h_aa7c8dfe8d198e011cb3760e4a3d8924f}{AUDIO\+\_\+\+DURATION\+\_\+\+MS}}) /\+ 1000U)}
+
+
+
+Nombre total d\textquotesingle{}échantillons (1920 samples). 
+
+\Hypertarget{audio__recorder_8h_ad3551782d92bcdd5037f27893b581901}\index{audio\_recorder.h@{audio\_recorder.h}!AUDIO\_SAMPLE\_RATE\_HZ@{AUDIO\_SAMPLE\_RATE\_HZ}}
+\index{AUDIO\_SAMPLE\_RATE\_HZ@{AUDIO\_SAMPLE\_RATE\_HZ}!audio\_recorder.h@{audio\_recorder.h}}
+\doxysubsubsection{\texorpdfstring{AUDIO\_SAMPLE\_RATE\_HZ}{AUDIO\_SAMPLE\_RATE\_HZ}}
+{\footnotesize\ttfamily \label{audio__recorder_8h_ad3551782d92bcdd5037f27893b581901} 
+\+\#define AUDIO\+\_\+\+SAMPLE\+\_\+\+RATE\+\_\+\+HZ~1000U}
+
+
+
+Fréquence d\textquotesingle{}échantillonnage de la capture (1 k\+Hz). 
+
+
+
+\label{audio__recorder_8h_doc-enum-members}
+\Hypertarget{audio__recorder_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818}\index{audio\_recorder.h@{audio\_recorder.h}!AudioStatus\_t@{AudioStatus\_t}}
+\index{AudioStatus\_t@{AudioStatus\_t}!audio\_recorder.h@{audio\_recorder.h}}
+\doxysubsubsection{\texorpdfstring{AudioStatus\_t}{AudioStatus\_t}}
+{\footnotesize\ttfamily \label{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818} 
+enum \doxymbox{\hyperlink{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818}{Audio\+Status\+\_\+t}}}
+
+
+
+Codes de retour pour les opérations audio. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AUDIO\_OK@{AUDIO\_OK}!audio\_recorder.h@{audio\_recorder.h}}
+\index{audio\_recorder.h@{audio\_recorder.h}!AUDIO\_OK@{AUDIO\_OK}}
+}\Hypertarget{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818a09688b7a88e0ba2d712a3d9a73604b15}\label{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818a09688b7a88e0ba2d712a3d9a73604b15} 
+AUDIO\+\_\+\+OK&Opération réussie. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AUDIO\_ERROR@{AUDIO\_ERROR}!audio\_recorder.h@{audio\_recorder.h}}
+\index{audio\_recorder.h@{audio\_recorder.h}!AUDIO\_ERROR@{AUDIO\_ERROR}}
+}\Hypertarget{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818a153dd3e294e6d11c90270dc0279d6370}\label{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818a153dd3e294e6d11c90270dc0279d6370} 
+AUDIO\+\_\+\+ERROR&Une erreur est survenue. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{audio__recorder_8h_doc-func-members}
+\Hypertarget{audio__recorder_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{audio__recorder_8h_ab7221c5787757aa7047d11984e595825}\index{audio\_recorder.h@{audio\_recorder.h}!AudioRecorder\_GetBuffer@{AudioRecorder\_GetBuffer}}
+\index{AudioRecorder\_GetBuffer@{AudioRecorder\_GetBuffer}!audio\_recorder.h@{audio\_recorder.h}}
+\doxysubsubsection{\texorpdfstring{AudioRecorder\_GetBuffer()}{AudioRecorder\_GetBuffer()}}
+{\footnotesize\ttfamily \label{audio__recorder_8h_ab7221c5787757aa7047d11984e595825} 
+const uint16\+\_\+t \texorpdfstring{$\ast$}{*} Audio\+Recorder\+\_\+\+Get\+Buffer (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}obtenir un pointeur direct vers le buffer de stockage RAM. 
+
+\begin{DoxyReturn}{Returns}
+Pointeur constant vers le tableau d\textquotesingle{}échantillons 16-\/bits. 
+\end{DoxyReturn}
+\Hypertarget{audio__recorder_8h_ad2440432f2b76a1f853918b8dfc4161a}\index{audio\_recorder.h@{audio\_recorder.h}!AudioRecorder\_GetSample@{AudioRecorder\_GetSample}}
+\index{AudioRecorder\_GetSample@{AudioRecorder\_GetSample}!audio\_recorder.h@{audio\_recorder.h}}
+\doxysubsubsection{\texorpdfstring{AudioRecorder\_GetSample()}{AudioRecorder\_GetSample()}}
+{\footnotesize\ttfamily \label{audio__recorder_8h_ad2440432f2b76a1f853918b8dfc4161a} 
+uint16\+\_\+t Audio\+Recorder\+\_\+\+Get\+Sample (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Récupère un échantillon précis du buffer RAM. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Position de l\textquotesingle{}échantillon (0 à \doxylink{audio__recorder_8h_a91b075f03ef8d56e34670a2ff2cbc559}{AUDIO\+\_\+\+SAMPLE\+\_\+\+COUNT} -\/ 1). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Valeur brute 12 bits de l\textquotesingle{}échantillon. 
+\end{DoxyReturn}
+\Hypertarget{audio__recorder_8h_af4d14dfc482c7c33bb525feefcd1f478}\index{audio\_recorder.h@{audio\_recorder.h}!AudioRecorder\_GetSampleCount@{AudioRecorder\_GetSampleCount}}
+\index{AudioRecorder\_GetSampleCount@{AudioRecorder\_GetSampleCount}!audio\_recorder.h@{audio\_recorder.h}}
+\doxysubsubsection{\texorpdfstring{AudioRecorder\_GetSampleCount()}{AudioRecorder\_GetSampleCount()}}
+{\footnotesize\ttfamily \label{audio__recorder_8h_af4d14dfc482c7c33bb525feefcd1f478} 
+uint32\+\_\+t Audio\+Recorder\+\_\+\+Get\+Sample\+Count (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Renvoie le nombre d\textquotesingle{}échantillons total d\textquotesingle{}une session audio. 
+
+\begin{DoxyReturn}{Returns}
+Taille du buffer en nombre d\textquotesingle{}échantillons. 
+\end{DoxyReturn}
+\Hypertarget{audio__recorder_8h_ae04dc5bcc283fa870ea7ec239dc61ce1}\index{audio\_recorder.h@{audio\_recorder.h}!AudioRecorder\_Init@{AudioRecorder\_Init}}
+\index{AudioRecorder\_Init@{AudioRecorder\_Init}!audio\_recorder.h@{audio\_recorder.h}}
+\doxysubsubsection{\texorpdfstring{AudioRecorder\_Init()}{AudioRecorder\_Init()}}
+{\footnotesize\ttfamily \label{audio__recorder_8h_ae04dc5bcc283fa870ea7ec239dc61ce1} 
+void Audio\+Recorder\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise le module d\textquotesingle{}enregistrement audio (effacement des buffers). 
+
+\begin{DoxyReturn}{Returns}
+Aucun. 
+\end{DoxyReturn}
+\Hypertarget{audio__recorder_8h_aaf4aeb89d8a49dc1e40b53d34718a635}\index{audio\_recorder.h@{audio\_recorder.h}!AudioRecorder\_IsFinished@{AudioRecorder\_IsFinished}}
+\index{AudioRecorder\_IsFinished@{AudioRecorder\_IsFinished}!audio\_recorder.h@{audio\_recorder.h}}
+\doxysubsubsection{\texorpdfstring{AudioRecorder\_IsFinished()}{AudioRecorder\_IsFinished()}}
+{\footnotesize\ttfamily \label{audio__recorder_8h_aaf4aeb89d8a49dc1e40b53d34718a635} 
+bool Audio\+Recorder\+\_\+\+Is\+Finished (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Vérifie si la capture en cours est terminée. 
+
+\begin{DoxyReturn}{Returns}
+true si l\textquotesingle{}enregistrement est fini, false sinon. 
+\end{DoxyReturn}
+\Hypertarget{audio__recorder_8h_a01314204b616b63f987c4ddff913fa3d}\index{audio\_recorder.h@{audio\_recorder.h}!AudioRecorder\_Record@{AudioRecorder\_Record}}
+\index{AudioRecorder\_Record@{AudioRecorder\_Record}!audio\_recorder.h@{audio\_recorder.h}}
+\doxysubsubsection{\texorpdfstring{AudioRecorder\_Record()}{AudioRecorder\_Record()}}
+{\footnotesize\ttfamily \label{audio__recorder_8h_a01314204b616b63f987c4ddff913fa3d} 
+\doxymbox{\hyperlink{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818}{Audio\+Status\+\_\+t}} Audio\+Recorder\+\_\+\+Record (\begin{DoxyParamCaption}\item[{adc\+\_\+id\+\_\+e}]{channel}{}\end{DoxyParamCaption})}
+
+
+
+Démarre une capture audio bloquante sur le canal ADC spécifié. 
+
+La cadence est imposée par l\textquotesingle{}unité DWT du processeur. 
+\begin{DoxyParams}{Parameters}
+{\em channel} & Identifiant du canal ADC d\textquotesingle{}entrée (provenance micro). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Statut de l\textquotesingle{}enregistrement de type \doxylink{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818}{Audio\+Status\+\_\+t}. 
+\end{DoxyReturn}
+\Hypertarget{audio__recorder_8h_abacbd52d7fe5311ea9c2dd1a1543ee1f}\index{audio\_recorder.h@{audio\_recorder.h}!AudioRecorder\_SaveToFlash@{AudioRecorder\_SaveToFlash}}
+\index{AudioRecorder\_SaveToFlash@{AudioRecorder\_SaveToFlash}!audio\_recorder.h@{audio\_recorder.h}}
+\doxysubsubsection{\texorpdfstring{AudioRecorder\_SaveToFlash()}{AudioRecorder\_SaveToFlash()}}
+{\footnotesize\ttfamily \label{audio__recorder_8h_abacbd52d7fe5311ea9c2dd1a1543ee1f} 
+\doxymbox{\hyperlink{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818}{Audio\+Status\+\_\+t}} Audio\+Recorder\+\_\+\+Save\+To\+Flash (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Compresse le buffer audio 12-\/bits en 8-\/bits et l\textquotesingle{}écrit dans la mémoire Flash. 
+
+Utilise le stockage par paquets de 64 bits (Double Word) requis par le STM32\+G4. \begin{DoxyReturn}{Returns}
+Statut de l\textquotesingle{}opération (\doxylink{audio__recorder_8h_a2b5244c1ac8253aae568d95206828818a09688b7a88e0ba2d712a3d9a73604b15}{AUDIO\+\_\+\+OK}). 
+\end{DoxyReturn}
