@@ -3,7 +3,7 @@
  * @file    ui.h
  * @author  Basile, Titouan, Guillaume
  * @date    Juin 2026
- * @brief   Déclarations des structures logiques de l'IHM (Interface Homme-Machine).
+ * @brief   Implémentation de la machine à états de l'IHM.
  *******************************************************************************
  */
 

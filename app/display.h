@@ -10,6 +10,13 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 #include <stdint.h>
+#include <stdbool.h>
+
+
+/**
+ * @brief Etat d'activation du filtre fuzz, est modifié dans ui.c
+ */
+extern bool fuzz_actif;
 
 /**
  * @brief  Initialise le bus, les broches de contrôle GPIO et l'orientation du contrôleur ILI9341.

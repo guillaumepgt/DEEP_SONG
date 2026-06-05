@@ -47,4 +47,5 @@ int main(void)
 
         HAL_Delay(10);
     }
+    return 1;
 }

@@ -14,7 +14,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-extern bool fuzz_actif;
 
 void DISPLAY_Init(void)
 {
