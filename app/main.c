@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include "ui.h"
 
+
 /**
  * @brief  Point d'entrée de l'application embarquée.
  * @return Entier (jamais atteint en embarqué).

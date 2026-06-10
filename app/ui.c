@@ -12,6 +12,10 @@
 #include "audio_recorder.h"
 #include "audio_player.h"
 #include "stm32g4_adc.h"
+#include "audio_storage.h"
+#include "stm32g4_flash.h"
+#include <stdio.h>
+
 
 #include <stdbool.h>
 
@@ -48,6 +52,7 @@ typedef enum
 static uint8_t menu_index = 0;
 static UI_State_t ui_state = UI_STATE_MENU;
 static bool audio_available = false;
+static uint16_t display_buffer[AUDIO_SAMPLE_COUNT];
 
 /** @brief État global d'activation de l'effet Fuzz (basculé via le bouton droite) */
 bool fuzz_actif = false;
@@ -77,9 +82,28 @@ void UI_Init(void)
     BSP_ADC_init();
     AudioRecorder_Init();
 
+    printf("\r\n--- CONTENU MEMOIRE FLASH ---\r\n");
+
+    for (uint32_t i = 0; i < 16; i++)
+    {
+        uint64_t data = BSP_FLASH_read_doubleword(i);
+
+        uint32_t partie_basse = (uint32_t)(data & 0xFFFFFFFFULL);
+        uint32_t partie_haute = (uint32_t)(data >> 32);
+
+        printf(
+            "Bloc %03lu : 0x%08lX%08lX\r\n",
+            (unsigned long)i,
+            (unsigned long)partie_haute,
+            (unsigned long)partie_basse
+        );
+    }
+
+    printf("--- FIN MEMOIRE FLASH ---\r\n");
+
     menu_index = 0;
     ui_state = UI_STATE_MENU;
-    audio_available = false;
+    audio_available = AudioStorage_HasAudio();
     fuzz_actif = false;
 
     previous_input.center = false;
@@ -207,9 +231,14 @@ void UI_Process(UI_Input_t input)
                 break;
 
             case UI_STATE_SHOW_SIGNAL:
+                AudioStorage_ReadFromFlash(
+                    display_buffer,
+                    AUDIO_SAMPLE_COUNT
+                );
+
                 DISPLAY_DrawRecordedSignal(
-                    AudioRecorder_GetBuffer(),
-                    AudioRecorder_GetSampleCount()
+                    display_buffer,
+                    AUDIO_SAMPLE_COUNT
                 );
 
                 ui_state = UI_STATE_MENU;

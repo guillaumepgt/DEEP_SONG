@@ -30,4 +30,10 @@ void AudioStorage_ReadFromFlash(uint16_t *buffer, uint32_t max_samples);
  */
 uint32_t AudioStorage_GetStoredSampleCount(void);
 
+/**
+ * @brief Vérifie si la zone Flash contient un enregistrement.
+ * @return true si des données sont présentes, false si la zone est effacée.
+ */
+bool AudioStorage_HasAudio(void);
+
 #endif

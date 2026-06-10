@@ -43,3 +43,12 @@ uint32_t AudioStorage_GetStoredSampleCount(void)
 {
     return AUDIO_SAMPLE_COUNT;
 }
+
+bool AudioStorage_HasAudio(void)
+{
+    uint64_t first_doubleword;
+
+    first_doubleword = BSP_FLASH_read_doubleword(0);
+
+    return first_doubleword != UINT64_MAX;
+}
