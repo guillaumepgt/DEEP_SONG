@@ -23,6 +23,7 @@ void AudioPlayer_Init(void);
 
 /**
  * @brief  Transfère les données Flash vers la RAM puis les joue en temps réel sur le Jack.
+ * @param  activer_fuzz Booléen activant (true) ou désactivant (false) l'effet de distorsion Fuzz.
  * @return Aucun.
  */
 void AudioPlayer_PlayFromFlash(bool activer_fuzz);

@@ -130,8 +130,8 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('audio__player_
 Functions</h2></td></tr>
 <tr class="memitem:a54084890d98ecdebea73df3b5050be4a" id="r_a54084890d98ecdebea73df3b5050be4a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a54084890d98ecdebea73df3b5050be4a">AudioPlayer_Init</a> (void)</td></tr>
 <tr class="memdesc:a54084890d98ecdebea73df3b5050be4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise le DAC périphérique et configure la base de temps matérielle DWT.  <br /></td></tr>
-<tr class="memitem:a6c38364bf297e9188de4d8258d4df7b1" id="r_a6c38364bf297e9188de4d8258d4df7b1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a6c38364bf297e9188de4d8258d4df7b1">AudioPlayer_PlayFromFlash</a> (void)</td></tr>
-<tr class="memdesc:a6c38364bf297e9188de4d8258d4df7b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transfère les données Flash vers la RAM puis les joue en temps réel sur le Jack.  <br /></td></tr>
+<tr class="memitem:a6ba3a3451290b19d02b2df29e3493a31" id="r_a6ba3a3451290b19d02b2df29e3493a31"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a6ba3a3451290b19d02b2df29e3493a31">AudioPlayer_PlayFromFlash</a> (bool activer_fuzz)</td></tr>
+<tr class="memdesc:a6ba3a3451290b19d02b2df29e3493a31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exécute la lecture audio avec application optionnelle d'un filtre DSP.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Lecteur audio cadencé par cycles d'horloge sur sortie analogique DAC. </p>
@@ -158,8 +158,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a6c38364bf297e9188de4d8258d4df7b1" name="a6c38364bf297e9188de4d8258d4df7b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c38364bf297e9188de4d8258d4df7b1">&#9670;&#160;</a></span>AudioPlayer_PlayFromFlash()</h2>
+<a id="a6ba3a3451290b19d02b2df29e3493a31" name="a6ba3a3451290b19d02b2df29e3493a31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ba3a3451290b19d02b2df29e3493a31">&#9670;&#160;</a></span>AudioPlayer_PlayFromFlash()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -167,13 +167,28 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void AudioPlayer_PlayFromFlash </td>
           <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>activer_fuzz</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Transfère les données Flash vers la RAM puis les joue en temps réel sur le Jack. </p>
+<p>Exécute la lecture audio avec application optionnelle d'un filtre DSP. </p>
+<p>Transfère les données Flash vers la RAM puis les joue en temps réel sur le Jack.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">activer_fuzz</td><td>Booléen activant l'effet de distorsion matérielle. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Aucun.</dd></dl>
+<p>Exécute la lecture audio avec application optionnelle d'un filtre DSP.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">activer_fuzz</td><td>Booléen activant (true) ou désactivant (false) l'effet de distorsion Fuzz. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>Aucun. </dd></dl>
 
 </div>

@@ -9,11 +9,13 @@ Implémentation des fonctions graphiques et des fenêtres de l\textquotesingle{}
 {\ttfamily \+\#include "{}tft\+\_\+ili9341/\+stm32g4\+\_\+ili9341.\+h"{}}\newline
 {\ttfamily \+\#include "{}stm32g4\+\_\+gpio.\+h"{}}\newline
 {\ttfamily \+\#include "{}stm32g4\+\_\+adc.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \+\#define \doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(r,  g,  b)
-\begin{DoxyCompactList}\small\item\em Macro de conversion des couleurs vers le format écran 16 bits. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Macro de conversion des couleurs RGB standard vers le format écran RGB565 (16 bits). \end{DoxyCompactList}\item 
 \+\#define \doxymbox{\hyperlink{display_8c_aa70b031eb15b92c079d10ac6fd7424d4}{C\+\_\+\+BACKGROUND}}~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(240, 244, 248)
 \item 
 \+\#define \doxymbox{\hyperlink{display_8c_ad562945b1c5993a7985d2d71a2aaf762}{C\+\_\+\+CARD\+\_\+\+BG}}~\doxymbox{\hyperlink{display_8c_ab2ed36b98652f54ec3e1fdc8a31c8b13}{RGB565}}(255, 255, 255)
@@ -57,6 +59,11 @@ void \doxymbox{\hyperlink{display_8c_ad35260d626ffdfeef9a18b20bbb63580}{DISPLAY\
 \begin{DoxyCompactList}\small\item\em Trace la courbe temporelle des données audio enregistrées à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
 void \doxymbox{\hyperlink{display_8c_a2be9367cf608bb9c83d616558b918f7c}{DISPLAY\+\_\+\+Draw\+Menu}} (uint8\+\_\+t selected\+\_\+index)
 \begin{DoxyCompactList}\small\item\em Affiche le menu de sélection principal avec surbrillance dynamique. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{display_8c_a889eeff81afab4eae55680f4d2fecf0f}{fuzz\+\_\+actif}}
+\begin{DoxyCompactList}\small\item\em Récupération de l\textquotesingle{}état global du Fuzz (défini dans \doxylink{ui_8c}{ui.\+c}) pour l\textquotesingle{}affichage conditionnel. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -140,7 +147,7 @@ Basile, Titouan, Guillaume
 \end{DoxyCode}
 
 
-Macro de conversion des couleurs vers le format écran 16 bits. 
+Macro de conversion des couleurs RGB standard vers le format écran RGB565 (16 bits). 
 
 
 
@@ -281,3 +288,21 @@ void DISPLAY\+\_\+\+Show\+Saving (\begin{DoxyParamCaption}\item[{void}]{}{}\end{
 
 Affiche le message de blocage durant l\textquotesingle{}écriture Flash. 
 
+
+
+\label{display_8c_doc-var-members}
+\Hypertarget{display_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{display_8c_a889eeff81afab4eae55680f4d2fecf0f}\index{display.c@{display.c}!fuzz\_actif@{fuzz\_actif}}
+\index{fuzz\_actif@{fuzz\_actif}!display.c@{display.c}}
+\doxysubsubsection{\texorpdfstring{fuzz\_actif}{fuzz\_actif}}
+{\footnotesize\ttfamily \label{display_8c_a889eeff81afab4eae55680f4d2fecf0f} 
+bool fuzz\+\_\+actif\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Récupération de l\textquotesingle{}état global du Fuzz (défini dans \doxylink{ui_8c}{ui.\+c}) pour l\textquotesingle{}affichage conditionnel. 
+
+État global d\textquotesingle{}activation de l\textquotesingle{}effet Fuzz (basculé via le bouton droite).
+
+Récupération de l\textquotesingle{}état global du Fuzz (défini dans \doxylink{ui_8c}{ui.\+c}) pour l\textquotesingle{}affichage conditionnel. 

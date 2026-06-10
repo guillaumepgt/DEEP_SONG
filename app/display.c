@@ -14,6 +14,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+/** @brief Récupération de l'état global du Fuzz (défini dans ui.c) pour l'affichage conditionnel */
+extern bool fuzz_actif;
 
 void DISPLAY_Init(void)
 {
@@ -26,7 +28,8 @@ void DISPLAY_Init(void)
     ILI9341_Fill(ILI9341_COLOR_GREEN);
 }
 
-#define RGB565(r, g, b) (((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3)) ///< Macro de conversion des couleurs vers le format écran 16 bits
+/** @brief Macro de conversion des couleurs RGB standard vers le format écran RGB565 (16 bits) */
+#define RGB565(r, g, b) (((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3))
 
 #define C_BACKGROUND   RGB565(240, 244, 248)
 #define C_CARD_BG      RGB565(255, 255, 255)
@@ -99,18 +102,11 @@ void DISPLAY_ShowPlaying(void)
 {
     if(fuzz_actif)
     {
-       DISPLAY_DrawMessageScreen(
-           "LECTURE AUDIO",
-           "Lecture en cours...",
-		   "Avec effet Fuzz"
-        );
+       DISPLAY_DrawMessageScreen("LECTURE AUDIO", "Lecture en cours...", "Avec effet Fuzz");
     }
-    else{
-        DISPLAY_DrawMessageScreen(
-            "LECTURE AUDIO",
-            "Lecture en cours...",
-            0
-        );
+    else
+    {
+        DISPLAY_DrawMessageScreen("LECTURE AUDIO", "Lecture en cours...", 0);
     }
 }
 

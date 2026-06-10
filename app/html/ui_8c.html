@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('ui_8c.html',''
 <code>#include &quot;<a class="el" href="audio__player_8h_source.html">audio_player.h</a>&quot;</code><br />
 <code>#include &quot;stm32g4_adc.h&quot;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -143,6 +144,11 @@ Functions</h2></td></tr>
 <tr class="memdesc:a55aaeaa82656ec027048c109b598fc11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise l'afficheur, l'ADC, et dessine l'écran principal d'accueil du projet.  <br /></td></tr>
 <tr class="memitem:a8040759f39d20f0676021e0a799b13f5" id="r_a8040759f39d20f0676021e0a799b13f5"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a8040759f39d20f0676021e0a799b13f5">UI_Process</a> (<a class="el" href="struct_u_i___input__t.html">UI_Input_t</a> input)</td></tr>
 <tr class="memdesc:a8040759f39d20f0676021e0a799b13f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Machine à états exécutée périodiquement pour traiter la navigation IHM.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a889eeff81afab4eae55680f4d2fecf0f" id="r_a889eeff81afab4eae55680f4d2fecf0f"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a889eeff81afab4eae55680f4d2fecf0f">fuzz_actif</a> = false</td></tr>
+<tr class="memdesc:a889eeff81afab4eae55680f4d2fecf0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">État global d'activation de l'effet Fuzz (basculé via le bouton droite).  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implémentation de l'ordonnanceur logique et visuel de l'IHM. </p>
@@ -219,6 +225,25 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Aucun. </dd></dl>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
+<a id="a889eeff81afab4eae55680f4d2fecf0f" name="a889eeff81afab4eae55680f4d2fecf0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a889eeff81afab4eae55680f4d2fecf0f">&#9670;&#160;</a></span>fuzz_actif</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fuzz_actif = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>État global d'activation de l'effet Fuzz (basculé via le bouton droite). </p>
+<p>Récupération de l'état global du Fuzz (défini dans <a class="el" href="ui_8c.html" title="Implémentation de l&#39;ordonnanceur logique et visuel de l&#39;IHM.">ui.c</a>) pour l'affichage conditionnel.</p>
+<p>État global d'activation de l'effet Fuzz (basculé via le bouton droite). </p>
 
 </div>
 </div>

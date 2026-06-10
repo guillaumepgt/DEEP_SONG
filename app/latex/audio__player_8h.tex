@@ -8,12 +8,13 @@ Générateur de signal de sortie (Lecteur audio) basé sur le DAC.
 {\ttfamily \+\#include "{}config.\+h"{}}\newline
 {\ttfamily \+\#include "{}stm32g4\+\_\+dac.\+h"{}}\newline
 {\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \doxymbox{\hyperlink{audio__player_8h_a54084890d98ecdebea73df3b5050be4a}{Audio\+Player\+\_\+\+Init}} (void)
 \begin{DoxyCompactList}\small\item\em Initialise le DAC périphérique et configure la base de temps matérielle DWT. \end{DoxyCompactList}\item 
-void \doxymbox{\hyperlink{audio__player_8h_a6c38364bf297e9188de4d8258d4df7b1}{Audio\+Player\+\_\+\+Play\+From\+Flash}} (void)
+void \doxymbox{\hyperlink{audio__player_8h_a6ba3a3451290b19d02b2df29e3493a31}{Audio\+Player\+\_\+\+Play\+From\+Flash}} (bool activer\+\_\+fuzz)
 \begin{DoxyCompactList}\small\item\em Transfère les données Flash vers la RAM puis les joue en temps réel sur le Jack. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -44,16 +45,33 @@ Initialise le DAC périphérique et configure la base de temps matérielle DWT.
 \begin{DoxyReturn}{Returns}
 Aucun. 
 \end{DoxyReturn}
-\Hypertarget{audio__player_8h_a6c38364bf297e9188de4d8258d4df7b1}\index{audio\_player.h@{audio\_player.h}!AudioPlayer\_PlayFromFlash@{AudioPlayer\_PlayFromFlash}}
+\Hypertarget{audio__player_8h_a6ba3a3451290b19d02b2df29e3493a31}\index{audio\_player.h@{audio\_player.h}!AudioPlayer\_PlayFromFlash@{AudioPlayer\_PlayFromFlash}}
 \index{AudioPlayer\_PlayFromFlash@{AudioPlayer\_PlayFromFlash}!audio\_player.h@{audio\_player.h}}
 \doxysubsubsection{\texorpdfstring{AudioPlayer\_PlayFromFlash()}{AudioPlayer\_PlayFromFlash()}}
-{\footnotesize\ttfamily \label{audio__player_8h_a6c38364bf297e9188de4d8258d4df7b1} 
-void Audio\+Player\+\_\+\+Play\+From\+Flash (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{audio__player_8h_a6ba3a3451290b19d02b2df29e3493a31} 
+void Audio\+Player\+\_\+\+Play\+From\+Flash (\begin{DoxyParamCaption}\item[{bool}]{activer\+\_\+fuzz}{}\end{DoxyParamCaption})}
 
 
 
 Transfère les données Flash vers la RAM puis les joue en temps réel sur le Jack. 
 
+Exécute la lecture audio avec application optionnelle d\textquotesingle{}un filtre DSP.
+
+
+\begin{DoxyParams}{Parameters}
+{\em activer\+\_\+fuzz} & Booléen activant (true) ou désactivant (false) l\textquotesingle{}effet de distorsion Fuzz. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Aucun.
+\end{DoxyReturn}
+Transfère les données Flash vers la RAM puis les joue en temps réel sur le Jack.
+
+
+\begin{DoxyParams}{Parameters}
+{\em activer\+\_\+fuzz} & Booléen activant l\textquotesingle{}effet de distorsion matérielle. \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Aucun. 
 \end{DoxyReturn}

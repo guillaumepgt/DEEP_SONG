@@ -22,10 +22,10 @@
  */
 typedef enum
 {
-    MENU_RECORD = 0,
-    MENU_PLAY,
-    MENU_SHOW_SIGNAL,
-    MENU_COUNT
+    MENU_RECORD = 0,   ///< Index de la commande d'enregistrement
+    MENU_PLAY,         ///< Index de la commande de lecture haut-parleur
+    MENU_SHOW_SIGNAL,  ///< Index de la commande d'affichage de l'oscilloscope
+    MENU_COUNT         ///< Indicateur de limite supérieure du menu
 } UI_MenuItem_t;
 
 
@@ -49,10 +49,10 @@ static uint8_t menu_index = 0;
 static UI_State_t ui_state = UI_STATE_MENU;
 static bool audio_available = false;
 
+/** @brief État global d'activation de l'effet Fuzz (basculé via le bouton droite) */
 bool fuzz_actif = false;
 
 static UI_Input_t previous_input;
-
 
 /**
  * @brief Détecte un front montant sur un bouton.
@@ -198,10 +198,8 @@ void UI_Process(UI_Input_t input)
 
             case UI_STATE_PLAYING:
                 DISPLAY_ShowPlaying();
-
                 AudioPlayer_Init();
                 AudioPlayer_PlayFromFlash(fuzz_actif);
-
                 DISPLAY_Init();
                 DISPLAY_ShowFinished();
 

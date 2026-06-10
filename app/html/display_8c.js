@@ -20,5 +20,6 @@ var display_8c =
     [ "DISPLAY_ShowRecordFinished", "display_8c.html#a0facb8814880332a2a80c4f762829832", null ],
     [ "DISPLAY_ShowRecording", "display_8c.html#ac82a4a7d289814490d444f91b32fd51e", null ],
     [ "DISPLAY_ShowRecordPrompt", "display_8c.html#ae1b9b16d7de0de2245ca560910d4e4c9", null ],
-    [ "DISPLAY_ShowSaving", "display_8c.html#a824b07e4bff761be06fe2a1314a3c582", null ]
+    [ "DISPLAY_ShowSaving", "display_8c.html#a824b07e4bff761be06fe2a1314a3c582", null ],
+    [ "fuzz_actif", "display_8c.html#a889eeff81afab4eae55680f4d2fecf0f", null ]
 ];

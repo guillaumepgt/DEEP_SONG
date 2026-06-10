@@ -11,6 +11,7 @@ Implémentation de l\textquotesingle{}ordonnanceur logique et visuel de l\textqu
 {\ttfamily \+\#include "{}audio\+\_\+player.\+h"{}}\newline
 {\ttfamily \+\#include "{}stm32g4\+\_\+adc.\+h"{}}\newline
 {\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,6 +28,11 @@ void \doxymbox{\hyperlink{ui_8c_a55aaeaa82656ec027048c109b598fc11}{UI\+\_\+\+Ini
 \begin{DoxyCompactList}\small\item\em Initialise l\textquotesingle{}afficheur, l\textquotesingle{}ADC, et dessine l\textquotesingle{}écran principal d\textquotesingle{}accueil du projet. \end{DoxyCompactList}\item 
 void \doxymbox{\hyperlink{ui_8c_a8040759f39d20f0676021e0a799b13f5}{UI\+\_\+\+Process}} (\doxymbox{\hyperlink{struct_u_i___input__t}{UI\+\_\+\+Input\+\_\+t}} input)
 \begin{DoxyCompactList}\small\item\em Machine à états exécutée périodiquement pour traiter la navigation IHM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{ui_8c_a889eeff81afab4eae55680f4d2fecf0f}{fuzz\+\_\+actif}} = false
+\begin{DoxyCompactList}\small\item\em État global d\textquotesingle{}activation de l\textquotesingle{}effet Fuzz (basculé via le bouton droite). \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -115,3 +121,21 @@ Filtre les fronts montants des boutons pour valider ou changer de page.
 \begin{DoxyReturn}{Returns}
 Aucun. 
 \end{DoxyReturn}
+
+
+\label{ui_8c_doc-var-members}
+\Hypertarget{ui_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{ui_8c_a889eeff81afab4eae55680f4d2fecf0f}\index{ui.c@{ui.c}!fuzz\_actif@{fuzz\_actif}}
+\index{fuzz\_actif@{fuzz\_actif}!ui.c@{ui.c}}
+\doxysubsubsection{\texorpdfstring{fuzz\_actif}{fuzz\_actif}}
+{\footnotesize\ttfamily \label{ui_8c_a889eeff81afab4eae55680f4d2fecf0f} 
+bool fuzz\+\_\+actif = false}
+
+
+
+État global d\textquotesingle{}activation de l\textquotesingle{}effet Fuzz (basculé via le bouton droite). 
+
+Récupération de l\textquotesingle{}état global du Fuzz (défini dans \doxylink{ui_8c}{ui.\+c}) pour l\textquotesingle{}affichage conditionnel.
+
+État global d\textquotesingle{}activation de l\textquotesingle{}effet Fuzz (basculé via le bouton droite). 

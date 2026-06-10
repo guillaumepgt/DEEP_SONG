@@ -30,13 +30,26 @@ void DISPLAY_Init(void);
  */
 void DISPLAY_DrawGraphScreen(void);
 
-void DISPLAY_ShowRecordPrompt(void);     ///< Affiche l'invite de commande pour démarrer l'enregistrement
-void DISPLAY_ShowRecording(void);        ///< Affiche l'écran animé d'enregistrement en cours
-void DISPLAY_ShowSaving(void);           ///< Affiche le message de blocage durant l'écriture Flash
-void DISPLAY_ShowPlayPrompt(void);       ///< Affiche l'erreur si la Flash ne contient aucune donnée
-void DISPLAY_ShowPlaying(void);          ///< Affiche l'animation de lecture de la piste audio
-void DISPLAY_ShowFinished(void);         ///< Affiche l'écran de fin de lecture audio
-void DISPLAY_ShowRecordFinished(void);   ///< Affiche la fin de la capture analogique
+/** @brief Affiche l'invite de commande pour démarrer l'enregistrement */
+void DISPLAY_ShowRecordPrompt(void);
+
+/** @brief Affiche l'écran animé d'enregistrement en cours */
+void DISPLAY_ShowRecording(void);
+
+/** @brief Affiche le message de blocage durant l'écriture Flash */
+void DISPLAY_ShowSaving(void);
+
+/** @brief Affiche l'erreur si la Flash ne contient aucune donnée */
+void DISPLAY_ShowPlayPrompt(void);
+
+/** @brief Affiche l'animation de lecture de la piste audio */
+void DISPLAY_ShowPlaying(void);
+
+/** @brief Affiche l'écran de fin de lecture audio */
+void DISPLAY_ShowFinished(void);
+
+/** @brief Affiche la fin de la capture analogique */
+void DISPLAY_ShowRecordFinished(void);
 
 /**
  * @brief  Trace la courbe temporelle des données audio enregistrées à l'écran.

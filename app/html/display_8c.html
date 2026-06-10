@@ -125,11 +125,13 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('display_8c.htm
 <code>#include &quot;tft_ili9341/stm32g4_ili9341.h&quot;</code><br />
 <code>#include &quot;stm32g4_gpio.h&quot;</code><br />
 <code>#include &quot;stm32g4_adc.h&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ab2ed36b98652f54ec3e1fdc8a31c8b13" id="r_ab2ed36b98652f54ec3e1fdc8a31c8b13"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ab2ed36b98652f54ec3e1fdc8a31c8b13">RGB565</a>(r,  g,  b)</td></tr>
-<tr class="memdesc:ab2ed36b98652f54ec3e1fdc8a31c8b13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro de conversion des couleurs vers le format écran 16 bits.  <br /></td></tr>
+<tr class="memdesc:ab2ed36b98652f54ec3e1fdc8a31c8b13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro de conversion des couleurs RGB standard vers le format écran RGB565 (16 bits).  <br /></td></tr>
 <tr class="memitem:aa70b031eb15b92c079d10ac6fd7424d4" id="r_aa70b031eb15b92c079d10ac6fd7424d4"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aa70b031eb15b92c079d10ac6fd7424d4">C_BACKGROUND</a>&#160;&#160;&#160;<a class="el" href="#ab2ed36b98652f54ec3e1fdc8a31c8b13">RGB565</a>(240, 244, 248)</td></tr>
 <tr class="memitem:ad562945b1c5993a7985d2d71a2aaf762" id="r_ad562945b1c5993a7985d2d71a2aaf762"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ad562945b1c5993a7985d2d71a2aaf762">C_CARD_BG</a>&#160;&#160;&#160;<a class="el" href="#ab2ed36b98652f54ec3e1fdc8a31c8b13">RGB565</a>(255, 255, 255)</td></tr>
 <tr class="memitem:a00c2f3e79d828c1a2aade551134886b6" id="r_a00c2f3e79d828c1a2aade551134886b6"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a00c2f3e79d828c1a2aade551134886b6">C_CARD_BORDER</a>&#160;&#160;&#160;<a class="el" href="#ab2ed36b98652f54ec3e1fdc8a31c8b13">RGB565</a>(220, 225, 230)</td></tr>
@@ -164,6 +166,11 @@ Functions</h2></td></tr>
 <tr class="memdesc:ad35260d626ffdfeef9a18b20bbb63580"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trace la courbe temporelle des données audio enregistrées à l'écran.  <br /></td></tr>
 <tr class="memitem:a2be9367cf608bb9c83d616558b918f7c" id="r_a2be9367cf608bb9c83d616558b918f7c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2be9367cf608bb9c83d616558b918f7c">DISPLAY_DrawMenu</a> (uint8_t selected_index)</td></tr>
 <tr class="memdesc:a2be9367cf608bb9c83d616558b918f7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le menu de sélection principal avec surbrillance dynamique.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a889eeff81afab4eae55680f4d2fecf0f" id="r_a889eeff81afab4eae55680f4d2fecf0f"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a889eeff81afab4eae55680f4d2fecf0f">fuzz_actif</a></td></tr>
+<tr class="memdesc:a889eeff81afab4eae55680f4d2fecf0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupération de l'état global du Fuzz (défini dans <a class="el" href="ui_8c.html" title="Implémentation de l&#39;ordonnanceur logique et visuel de l&#39;IHM.">ui.c</a>) pour l'affichage conditionnel.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implémentation des fonctions graphiques et des fenêtres de l'IHM. </p>
@@ -321,7 +328,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">(((r &amp; 0xF8) &lt;&lt; 8) | ((g &amp; 0xFC) &lt;&lt; 3) | (b &gt;&gt; 3))</div>
 </div><!-- fragment -->
-<p>Macro de conversion des couleurs vers le format écran 16 bits. </p>
+<p>Macro de conversion des couleurs RGB standard vers le format écran RGB565 (16 bits). </p>
 
 </div>
 </div>
@@ -553,6 +560,33 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Affiche le message de blocage durant l'écriture Flash. </p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
+<a id="a889eeff81afab4eae55680f4d2fecf0f" name="a889eeff81afab4eae55680f4d2fecf0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a889eeff81afab4eae55680f4d2fecf0f">&#9670;&#160;</a></span>fuzz_actif</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool fuzz_actif</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Récupération de l'état global du Fuzz (défini dans <a class="el" href="ui_8c.html" title="Implémentation de l&#39;ordonnanceur logique et visuel de l&#39;IHM.">ui.c</a>) pour l'affichage conditionnel. </p>
+<p>État global d'activation de l'effet Fuzz (basculé via le bouton droite).</p>
+<p>Récupération de l'état global du Fuzz (défini dans <a class="el" href="ui_8c.html" title="Implémentation de l&#39;ordonnanceur logique et visuel de l&#39;IHM.">ui.c</a>) pour l'affichage conditionnel. </p>
 
 </div>
 </div>

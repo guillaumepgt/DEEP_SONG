@@ -7,5 +7,6 @@ var ui_8c =
       [ "MENU_COUNT", "ui_8c.html#ab4e0e61d72486265ec7c36de732e454aafb68e97b0260e3b8a29736d56856d436", null ]
     ] ],
     [ "UI_Init", "ui_8c.html#a55aaeaa82656ec027048c109b598fc11", null ],
-    [ "UI_Process", "ui_8c.html#a8040759f39d20f0676021e0a799b13f5", null ]
+    [ "UI_Process", "ui_8c.html#a8040759f39d20f0676021e0a799b13f5", null ],
+    [ "fuzz_actif", "ui_8c.html#a889eeff81afab4eae55680f4d2fecf0f", null ]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['left_0',['left',['../struct_u_i___input__t.html#a79c68d75fc658026a9f27d870f50c779',1,'UI_Input_t']]]
+  ['fuzz_5factif_0',['fuzz_actif',['../display_8c.html#a889eeff81afab4eae55680f4d2fecf0f',1,'fuzz_actif:&#160;ui.c'],['../ui_8c.html#a889eeff81afab4eae55680f4d2fecf0f',1,'fuzz_actif:&#160;ui.c']]]
 ];
